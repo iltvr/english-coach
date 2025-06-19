@@ -225,7 +225,7 @@ export const ApplicationForm: React.FC = () => {
                       errorMessage={errors.timeSlot?.message}
                     >
                       {timeSlotOptions.map((option) => (
-                        <SelectItem key={option.key} value={option.key}>
+                        <SelectItem key={option.key} textValue={option.key}>
                           {t(`application.form.timeSlotOptions.${option.key}`)}
                         </SelectItem>
                       ))}
@@ -267,7 +267,7 @@ export const ApplicationForm: React.FC = () => {
                         errorMessage={errors.timeframe?.message}
                       >
                         {timeframeOptions.map((option) => (
-                          <SelectItem key={option.key} value={option.key}>
+                          <SelectItem key={option.key} textValue={option.key}>
                             {option.label}
                           </SelectItem>
                         ))}
@@ -293,7 +293,7 @@ export const ApplicationForm: React.FC = () => {
                         errorMessage={errors.weeklyTime?.message}
                       >
                         {weeklyTimeOptions.map((option) => (
-                          <SelectItem key={option.key} value={option.key}>
+                          <SelectItem key={option.key} textValue={option.key}>
                             {option.label}
                           </SelectItem>
                         ))}
@@ -332,17 +332,17 @@ export const ApplicationForm: React.FC = () => {
                         isRequired
                         color="primary"
                       >
-                        <div className="text-sm">
-                          {t('application.form.termsAgreement')}
-                          <Link to="/privacy-policy" className="text-primary hover:underline mx-1">
-                            {t('footer.privacy')}
-                          </Link>
-                          {t('application.form.and')}
-                          <Link to="/terms-of-service" className="text-primary hover:underline mx-1">
-                            {t('footer.terms')}
-                          </Link>
-                        </div>
                       </Checkbox>
+                      <span className="text-sm">
+                        {t('application.form.termsAgreement')}
+                        <Link to="/privacy-policy" className="text-primary hover:underline mx-1">
+                          {t('footer.privacy')}
+                        </Link>
+                        {t('application.form.and')}
+                        <Link to="/terms-of-service" className="text-primary hover:underline mx-1">
+                          {t('footer.terms')}
+                        </Link>
+                      </span>
                       {errors.termsAgreed && (
                         <p className="text-danger text-xs mt-1">{errors.termsAgreed.message}</p>
                       )}

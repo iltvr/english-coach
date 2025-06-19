@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavbarComponent } from '../../components/navbar';
 import { Footer } from '../../components/footer';
 import { useTranslation } from 'react-i18next';
 
 const TermsOfServicePage: React.FC = () => {
   const { t } = useTranslation();
-  
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col">
       <NavbarComponent isScrolled={true} />

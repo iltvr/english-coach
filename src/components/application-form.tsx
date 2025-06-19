@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardBody, Input, Textarea, Button, addToast, Select, SelectItem, Checkbox } from '@heroui/react';
 import { useForm, Controller } from 'react-hook-form';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { submitApplication } from '../services/api-service';
+import Turnstile from 'react-turnstile';
 
 interface FormData {
   name: string;
@@ -20,8 +21,9 @@ interface FormData {
 
 export const ApplicationForm: React.FC = () => {
   const { t } = useTranslation();
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
-  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState('');
+
   // Define time slot options
   const timeSlotOptions = [
     { key: "morning", label: t('application.form.timeSlotOptions.morning') },
@@ -30,7 +32,7 @@ export const ApplicationForm: React.FC = () => {
     { key: "night", label: t('application.form.timeSlotOptions.night') },
     { key: "weekend", label: t('application.form.timeSlotOptions.weekend') }
   ];
-  
+
   // Define weekly time options
   const weeklyTimeOptions = [
     { key: "1-2", label: t('application.form.weeklyTimeOptions.option1') },
@@ -38,7 +40,7 @@ export const ApplicationForm: React.FC = () => {
     { key: "6-8", label: t('application.form.weeklyTimeOptions.option3') },
     { key: "9+", label: t('application.form.weeklyTimeOptions.option4') }
   ];
-  
+
   // Define timeframe options
   const timeframeOptions = [
     { key: "1-3-months", label: t('application.form.timeframeOptions.option1') },
@@ -62,7 +64,7 @@ export const ApplicationForm: React.FC = () => {
     },
     mode: "all" // Changed from "onChange" to "all" to validate on all events
   });
-  
+
   // Fix: Properly watch all required fields
   const name = watch("name");
   const email = watch("email");
@@ -73,9 +75,9 @@ export const ApplicationForm: React.FC = () => {
   const weeklyTime = watch("weeklyTime");
   const experience = watch("experience");
   const termsAgreed = watch("termsAgreed");
-  
+
   // Fix: Correctly check if all required fields are filled
-  const isFormComplete = 
+  const isFormComplete =
     !!name && name.trim() !== '' &&
     !!email && email.trim() !== '' &&
     !!contact && contact.trim() !== '' &&
@@ -87,8 +89,6 @@ export const ApplicationForm: React.FC = () => {
     termsAgreed === true;
 
   const onSubmit = async (data: FormData) => {
-    setIsSubmitting(true);
-    
     // Add shorter timeout to prevent hanging on API calls
     const timeoutId = setTimeout(() => {
       setIsSubmitting(false);
@@ -98,9 +98,9 @@ export const ApplicationForm: React.FC = () => {
         severity: 'danger',
       });
     }, 3000); // Reduced to 3 seconds timeout
-    
+
     try {
-      await submitApplication(data);
+      await submitApplication(data, turnstileToken);
       clearTimeout(timeoutId);
       addToast({
         title: t('application.form.success'),
@@ -134,7 +134,7 @@ export const ApplicationForm: React.FC = () => {
   return (
     <section id="apply" className="section-padding bg-content1">
       <div className="container mx-auto px-4">
-        <motion.div 
+        <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -168,11 +168,11 @@ export const ApplicationForm: React.FC = () => {
                       />
                     )}
                   />
-                  
+
                   <Controller
                     name="email"
                     control={control}
-                    rules={{ 
+                    rules={{
                       required: t('application.form.required') as string,
                       validate: validateEmail
                     }}
@@ -192,7 +192,7 @@ export const ApplicationForm: React.FC = () => {
                 <Controller
                   name="contact"
                   control={control}
-                  rules={{ 
+                  rules={{
                     required: t('application.form.required') as string,
                     validate: validatePhone
                   }}
@@ -274,7 +274,7 @@ export const ApplicationForm: React.FC = () => {
                       </Select>
                     )}
                   />
-                  
+
                   <Controller
                     name="weeklyTime"
                     control={control}
@@ -320,8 +320,8 @@ export const ApplicationForm: React.FC = () => {
                 <Controller
                   name="termsAgreed"
                   control={control}
-                  rules={{ 
-                    required: t('application.form.termsRequired') as string 
+                  rules={{
+                    required: t('application.form.termsRequired') as string
                   }}
                   render={({ field: { onChange, value, ...restField } }) => (
                     <div className="mt-4">
@@ -350,10 +350,17 @@ export const ApplicationForm: React.FC = () => {
                   )}
                 />
 
+
+                {/* <Turnstile
+                  sitekey={process.env.VITE_TURNSTILE_SITE_KEY || ''}
+                  onVerify={(token) => setTurnstileToken(token)}
+                /> */}
+                {/* {errors.turnstile && <p className="text-danger">{errors.turnstile}</p>} */}
+
                 <div className="flex justify-center">
-                  <Button 
-                    type="submit" 
-                    color="primary" 
+                  <Button
+                    type="submit"
+                    color="primary"
                     size="lg"
                     isLoading={isSubmitting}
                     isDisabled={!isFormComplete}

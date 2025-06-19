@@ -16,7 +16,7 @@ const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL || '';
 
 /**
  * Sends an email notification with the application data
- * 
+ *
  * @param data - The application form data to send in the email
  * @returns A promise that resolves when the email is successfully sent
  * @throws Error if the email fails to send
@@ -26,10 +26,10 @@ export const sendEmailNotification = async (data: ApplicationData): Promise<void
     console.log('Demo mode: Email notification skipped - no API endpoint or admin email provided');
     return Promise.resolve();
   }
-  
+
   try {
     const emailContent = formatEmailContent(data);
-    
+
     const response = await axios.post(EMAIL_API_ENDPOINT, {
       to: ADMIN_EMAIL,
       subject: 'New English Learning Application',
@@ -37,11 +37,11 @@ export const sendEmailNotification = async (data: ApplicationData): Promise<void
     }, {
       timeout: 5000 // 5 second timeout
     });
-    
+
     if (response.status !== 200) {
       throw new Error(`Failed to send email notification: ${response.statusText}`);
     }
-    
+
     console.log('Email notification sent successfully');
     return Promise.resolve();
   } catch (error) {
@@ -52,7 +52,7 @@ export const sendEmailNotification = async (data: ApplicationData): Promise<void
 
 /**
  * Formats the application data into a readable HTML email content
- * 
+ *
  * @param data - The application form data to format
  * @returns A formatted HTML string for the email content
  */

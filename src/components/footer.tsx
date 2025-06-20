@@ -25,12 +25,12 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2 text-default-300">
               <li className="flex items-center gap-2">
                 <Icon icon="lucide:mail" className="w-4 h-4 flex-shrink-0" />
-                <span>contact@englishcoach.com</span>
+                <span>contact@english-coach.online</span>
               </li>
-              <li className="flex items-center gap-2">
+              {/* <li className="flex items-center gap-2">
                 <Icon icon="lucide:phone" className="w-4 h-4 flex-shrink-0" />
                 <span>+1 (555) 123-4567</span>
-              </li>
+              </li> */}
               <li className="flex items-center gap-2">
                 <Icon icon="lucide:map-pin" className="w-4 h-4 flex-shrink-0" />
                 <span>Online Worldwide</span>

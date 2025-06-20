@@ -225,7 +225,7 @@ export const ApplicationForm: React.FC = () => {
                       errorMessage={errors.timeSlot?.message}
                     >
                       {timeSlotOptions.map((option) => (
-                        <SelectItem key={option.key} textValue={option.key}>
+                        <SelectItem key={option.key} textValue={option.label}>
                           {t(`application.form.timeSlotOptions.${option.key}`)}
                         </SelectItem>
                       ))}
@@ -267,7 +267,7 @@ export const ApplicationForm: React.FC = () => {
                         errorMessage={errors.timeframe?.message}
                       >
                         {timeframeOptions.map((option) => (
-                          <SelectItem key={option.key} textValue={option.key}>
+                          <SelectItem key={option.key} textValue={option.label}>
                             {option.label}
                           </SelectItem>
                         ))}
@@ -293,7 +293,7 @@ export const ApplicationForm: React.FC = () => {
                         errorMessage={errors.weeklyTime?.message}
                       >
                         {weeklyTimeOptions.map((option) => (
-                          <SelectItem key={option.key} textValue={option.key}>
+                          <SelectItem key={option.key} textValue={option.label}>
                             {option.label}
                           </SelectItem>
                         ))}

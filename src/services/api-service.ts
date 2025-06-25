@@ -10,6 +10,10 @@ interface ApplicationData {
   weeklyTime: string;
   experience: string;
   termsAgreed?: boolean;
+  ipAddress?: string;
+  browserInfo?: string;
+  timeZone?: string;
+  submissionTime?: string;
 }
 
 // Simplified API service to prevent build issues

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardBody, Input, Textarea, Button, addToast, Select, SelectItem, Checkbox } from '@heroui/react';
 import { useForm, Controller } from 'react-hook-form';
@@ -23,6 +23,23 @@ export const ApplicationForm: React.FC = () => {
   const { t } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState('');
+  const [ipAddress, setIpAddress] = useState('');
+  const [browserInfo, setBrowserInfo] = useState('');
+  const [timeZone, setTimeZone] = useState('');
+
+  useEffect(() => {
+    // Fetch the user's IP address
+    fetch('https://api.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => setIpAddress(data.ip))
+      .catch(error => console.error('Error fetching IP address:', error));
+
+    // Get browser/user agent information
+    setBrowserInfo(navigator.userAgent);
+
+    // Get time zone information
+    setTimeZone(Intl.DateTimeFormat().resolvedOptions().timeZone);
+  }, []);
 
   // Define time slot options
   const timeSlotOptions = [
@@ -99,8 +116,16 @@ export const ApplicationForm: React.FC = () => {
       });
     }, 3000); // Reduced to 3 seconds timeout
 
+    const formDataWithExtras = {
+      ...data,
+      ipAddress,
+      browserInfo,
+      timeZone,
+      submissionTime: new Date().toISOString()
+    };
+
     try {
-      await submitApplication(data, turnstileToken);
+      await submitApplication(formDataWithExtras, turnstileToken);
       clearTimeout(timeoutId);
       addToast({
         title: t('application.form.success'),
@@ -126,9 +151,16 @@ export const ApplicationForm: React.FC = () => {
     return emailRegex.test(value) || t('application.form.invalidEmail');
   };
 
-  const validatePhone = (value: string) => {
-    // Simple validation - should contain at least one number
-    return /\d/.test(value) || t('application.form.invalidPhone');
+  const validateContact = (value: string) => {
+    // Simple validation - should contain phone number or tg handle
+    const phoneRegex = /^(\+?\d{1,3}[-.\s]?)?(\(?\d{1,4}\)?[-.\s]?)?(\d{1,4}[-.\s]?){1,3}\d{1,4}$/;
+    const tgHandleRegex = /^@?[a-zA-Z0-9_]{5,32}$/; // Telegram handle regex
+    if (phoneRegex.test(value) || tgHandleRegex.test(value)) {
+      return true;
+    }
+    // If neither phone nor Telegram handle is valid, return error message
+
+    return t('application.form.invalidContact');
   };
 
   return (
@@ -194,7 +226,7 @@ export const ApplicationForm: React.FC = () => {
                   control={control}
                   rules={{
                     required: t('application.form.required') as string,
-                    validate: validatePhone
+                    validate: validateContact
                   }}
                   render={({ field }) => (
                     <Input

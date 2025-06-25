@@ -9,6 +9,10 @@ interface ApplicationData {
   weeklyTime: string;
   experience: string;
   termsAgreed?: boolean;
+  ipAddress?: string;
+  browserInfo?: string;
+  timeZone?: string;
+  submissionTime?: string;
 }
 
 // Telegram Bot configuration
@@ -24,23 +28,28 @@ const TELEGRAM_CHANNEL_ID = process.env.VITE_TELEGRAM_CHANNEL_ID || '';
  */
 const formatTelegramMessage = (data: ApplicationData): string => {
   return `
-  <b>🎓 New English Learning Application!</b>
+    🎓 *New Application Received* 🎓
 
-  <b>Name:</b> ${data.name}
-  <b>Email:</b> ${data.email}
-  <b>Contact:</b> ${data.contact}
-  <b>Preferred Time:</b> ${data.timeSlot}
+    👤 *Personal Information:*
+    • Name: ${data.name}
+    • Email: ${data.email}
+    • Contact: ${data.contact}
 
-  <b>Purpose:</b>
-  ${data.purpose}
+    🎯 *Learning Goals:*
+    • Preferred Time Slot: ${data.timeSlot}
+    • Purpose: ${data.purpose}
+    • Goal Duration: ${data.timeframe}
+    • Weekly Study Time: ${data.weeklyTime}
 
-  <b>Goal Timeframe:</b> ${data.timeframe}
-  <b>Weekly Study Time:</b> ${data.weeklyTime}
+    📚 *Experience:*
+    ${data.experience}
 
-  <b>Previous Experience:</b>
-  ${data.experience}
+    💻 *Technical Information:*
+    • IP Address: ${data.ipAddress}
+    • Browser: ${data.browserInfo}
+    • Time Zone: ${data.timeZone}
 
-  <i>Submitted: ${new Date().toLocaleString()}</i>
+    📅 Submitted: ${new Date(data.submissionTime).toLocaleString()}
   `;
 };
 
@@ -63,7 +72,7 @@ export const sendTelegramNotification = async (data: ApplicationData): Promise<v
       {
         chat_id: TELEGRAM_CHANNEL_ID,
         text: message,
-        parse_mode: 'HTML'
+        parse_mode: 'Markdown'
       },
       {
         timeout: 5000 // 5 second timeout

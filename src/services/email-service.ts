@@ -15,7 +15,7 @@ interface ApplicationData {
   timeframe: string;
   weeklyTime: string;
   experience: string;
-  termsAgreed?: boolean;
+  termsAgreed: boolean;
   ipAddress?: string;
   browserInfo?: string;
   timeZone?: string;

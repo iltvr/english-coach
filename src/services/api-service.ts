@@ -10,7 +10,7 @@ interface ApplicationData {
   timeframe: string;
   weeklyTime: string;
   experience: string;
-  termsAgreed?: boolean;
+  termsAgreed: boolean;
   ipAddress?: string;
   browserInfo?: string;
   timeZone?: string;
@@ -40,7 +40,7 @@ export const submitApplication = async (data: ApplicationData, turnstileToken: s
 
   try {
     // Create a copy of data without the termsAgreed field for storage
-    const { termsAgreed, ...dataToStore } = data;
+    const { ...dataToStore } = data;
 
     // Run all operations in parallel with Promise.all
     await Promise.all([

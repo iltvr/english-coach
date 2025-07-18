@@ -32,7 +32,14 @@ export default defineConfig(({ mode }) => {
       }
     },
     server: {
-      host: true
+      proxy: {
+        // Redirect /api calls to your backend during dev
+        '/api': {
+          target: process.env.VITE_BACKEND_URL,
+          changeOrigin: true,
+          secure: false
+        }
+      },
     },
     optimizeDeps: {
       include: ['react-router-dom']

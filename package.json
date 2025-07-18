@@ -44,7 +44,7 @@
     "@types/react-router-dom": "^5.3.3",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "10.4.20",
-    "jest": "^30.0.0",
+    "jest": "^30.0.4",
     "jest-environment-jsdom": "^30.0.0",
     "jest-transform-stub": "^2.0.0",
     "postcss": "8.4.49",

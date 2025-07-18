@@ -22,33 +22,29 @@ interface ApplicationData {
   submissionTime?: string;
 }
 
-/** Read from Vite’s import.meta.env or fallback to process.env */
-const BACKEND_URL =
-  // @ts-ignore: import.meta may not be defined in Node/Jest
-  (typeof import.meta !== 'undefined' && import.meta.env?.VITE_BACKEND_URL)
-    || process.env.VITE_BACKEND_URL;
-const API_KEY =
-  // @ts-ignore
-  (typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_KEY)
-    || process.env.VITE_API_KEY;
+// Must be defined in your .env and injected by Vite
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL?.replace(/\/$/, '')
+const API_KEY     = import.meta.env.VITE_API_KEY
 
 if (!BACKEND_URL) {
-  throw new Error('VITE_BACKEND_URL is not defined');
+  throw new Error('[email-service] VITE_BACKEND_URL is not defined')
 }
 if (!API_KEY) {
-  throw new Error('VITE_API_KEY is not defined');
+  throw new Error('[email-service] VITE_API_KEY is not defined')
 }
 
 /**
  * sendApplication
- * Sends the form data to the backend `/api/send` endpoint.
- * Throws on non-2xx responses.
+ * POSTs data to `${BACKEND_URL}/api/send`
+ * - CORS mode is explicitly set.
+ * - Throws on non‑2xx.
  */
 export async function sendApplication(data: ApplicationData): Promise<void> {
   const url = `${BACKEND_URL.replace(/\/$/, '')}/api/send`;
 
   const res = await fetch(url, {
     method: 'POST',
+    mode: 'cors',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${API_KEY}`

@@ -31,15 +31,19 @@ export default defineConfig(({ mode }) => {
         }
       }
     },
-    server: {
+   server: {
       proxy: {
-        // Redirect /api calls to your backend during dev
+        // local dev: /api/* → your local backend on :3000
         '/api': {
-          target: process.env.VITE_BACKEND_URL,
+          target: env.VITE_BACKEND_URL,
           changeOrigin: true,
-          secure: false
+          secure: false,
+          // ensure Vite also handles preflight locally
+          headers: {
+            'Access-Control-Allow-Origin': '*'
+          }
         }
-      },
+      }
     },
     optimizeDeps: {
       include: ['react-router-dom']

@@ -1,12 +1,9 @@
 /**
  * email-service.ts
- *
- * Encapsulates the API call for sending form data.
- * Uses Vite env for backend URL and API key auth,
- * with fallback to process.env (for Jest).
+ * Calls the Pages Function at /api/send
  */
 
-interface ApplicationData {
+export interface ApplicationData {
   name: string;
   email: string;
   contact: string;
@@ -22,38 +19,18 @@ interface ApplicationData {
   submissionTime?: string;
 }
 
-// Must be defined in your .env and injected by Vite
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL?.replace(/\/$/, '')
-const API_KEY     = import.meta.env.VITE_API_KEY
+const URL = import.meta.env.VITE_API_URL || ''; // e.g. '/api'
+if (!URL) throw new Error('VITE_API_URL not defined');
 
-if (!BACKEND_URL) {
-  throw new Error('[email-service] VITE_BACKEND_URL is not defined')
-}
-if (!API_KEY) {
-  throw new Error('[email-service] VITE_API_KEY is not defined')
-}
-
-/**
- * sendApplication
- * POSTs data to `${BACKEND_URL}/api/send`
- * - CORS mode is explicitly set.
- * - Throws on non‑2xx.
- */
-export async function sendApplication(data: ApplicationData): Promise<void> {
-  const url = `${BACKEND_URL.replace(/\/$/, '')}/api/send`;
-
-  const res = await fetch(url, {
+export async function sendApplication(data: ApplicationData) {
+  const res = await fetch(`${URL}/send`, {
     method: 'POST',
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${API_KEY}`
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
   });
 
   if (!res.ok) {
-    const text = await res.text();
-    throw new Error(`API error ${res.status}: ${text}`);
+    const txt = await res.text();
+    throw new Error(`API ${res.status}: ${txt}`);
   }
 }

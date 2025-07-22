@@ -31,6 +31,15 @@ export default defineConfig(({ mode }) => {
         }
       }
     },
+    server: {
+      proxy: {
+        '/api': {
+          target: 'http://localhost:8788',  // Pages Functions local dev port
+          changeOrigin: true,
+          secure: false
+        }
+      }
+    },
     optimizeDeps: {
       include: ['react-router-dom']
     }

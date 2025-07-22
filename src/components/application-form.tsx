@@ -114,7 +114,7 @@ export const ApplicationForm: React.FC = () => {
         description: "Request timed out. Please try again.",
         severity: 'danger',
       });
-    }, 3000); // Reduced to 3 seconds timeout
+    }, 5000); // Reduced to 3 seconds timeout
 
     const formDataWithExtras = {
       ...data,

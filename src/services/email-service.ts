@@ -19,8 +19,8 @@ export interface ApplicationData {
   submissionTime?: string;
 }
 
-const URL = import.meta.env.VITE_API_URL || ''; // e.g. '/api'
-if (!URL) throw new Error('VITE_API_URL not defined');
+const URL = import.meta.env.VITE_API_BASE_URL || ''; // e.g. '/api'
+if (!URL) throw new Error('VITE_API_BASE_URL not defined');
 
 export async function sendApplication(data: ApplicationData) {
   const res = await fetch(`${URL}/send`, {

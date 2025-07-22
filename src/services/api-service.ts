@@ -19,8 +19,6 @@ interface ApplicationData {
 
 // Simplified API service to prevent build issues
 export const submitApplication = async (data: ApplicationData, turnstileToken: string): Promise<void> => {
-  console.log('Submitting application:', data);
-
   // const turnstileResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
   //   method: 'POST',
   //   headers: {

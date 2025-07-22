@@ -8,7 +8,9 @@
     "dev": "vite",
     "build": "tsc --noCheck && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "pages:dev": "wrangler pages dev ./ --local",
+    "pages:publish": "wrangler pages publish ./ --project-name=english-teacher-landing"
   },
   "dependencies": {
     "@heroui/react": "2.7.10",

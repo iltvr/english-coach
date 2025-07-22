@@ -1,0 +1,5 @@
+/api/*
+  Access-Control-Allow-Origin: https://english-coach.online
+  Access-Control-Allow-Origin: https://english-coach.pages.dev
+  Access-Control-Allow-Methods: POST,OPTIONS
+  Access-Control-Allow-Headers: Content-Type

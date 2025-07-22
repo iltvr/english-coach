@@ -16,7 +16,7 @@ interface ImportMetaEnv {
   readonly VITE_TURNSTILE_SECRET_KEY: string
   readonly VITE_BACKEND_URL: string
   readonly VITE_API_KEY: string
-  readonly VITE_API_URL: string
+  readonly VITE_API_BASE_URL: string
   readonly VITE_SMTP2GO_API_KEY: string
   readonly VITE_SMTP2GO_FROM: string
   readonly VITE_TO_EMAIL: string

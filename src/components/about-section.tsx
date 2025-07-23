@@ -7,15 +7,15 @@ export const AboutSection: React.FC = () => {
   const { t } = useTranslation();
 
   const stats = [
-    { value: '10+', label: t('about.experience') },
-    { value: '500+', label: t('about.students') },
-    { value: '25+', label: t('about.countries') }
+    { value:  t('about.experience.value'), label: t('about.experience.title') },
+    { value: t('about.students.value'), label: t('about.students.title') },
+    { value: t('about.countries.value'), label: t('about.countries.title') }
   ];
 
   return (
     <section id="about" className="section-padding bg-content1">
       <div className="container mx-auto px-4">
-        <motion.div 
+        <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -28,7 +28,7 @@ export const AboutSection: React.FC = () => {
         </motion.div>
 
         <div className="flex flex-col md:flex-row gap-8 items-center">
-          <motion.div 
+          <motion.div
             className="md:w-1/2"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -36,15 +36,15 @@ export const AboutSection: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="relative rounded-lg overflow-hidden aspect-square">
-              <img 
-                src="https://img.heroui.chat/image/avatar?w=600&h=600&u=teacher" 
-                alt="English Teacher" 
+              <img
+                src="https://img.heroui.chat/image/avatar?w=600&h=600&u=teacher"
+                alt="English Teacher"
                 className="w-full h-full object-cover"
               />
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="md:w-1/2"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}

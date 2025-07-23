@@ -14,9 +14,18 @@
   "about": {
     "title": "About Me",
     "description": "I’m an experienced English teacher for adults who want to accomplish more: advance their careers, relocate abroad, or complete specialized training. I help each student reach their unique language goals, whether it’s improving overall fluency and confidence or tackling short‑term challenges like mastering English tenses once and for all.",
-    "experience": "Years of Experience",
-    "students": "Students Taught",
-    "countries": "Countries"
+    "experience": {
+      "title": "Years of Experience",
+      "value": "20+"
+    },
+    "students": {
+      "title": "Students Taught",
+      "value": "50+"
+    },
+    "countries": {
+      "title": "Countries Represented",
+      "value": "10+"
+    }
   },
   "benefits": {
     "title": "Why Learn with Me",

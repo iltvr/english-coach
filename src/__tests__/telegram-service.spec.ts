@@ -25,16 +25,16 @@ describe('Telegram Service', () => {
     // Mock environment variables
     process.env.VITE_TELEGRAM_BOT_TOKEN = 'test-bot-token';
     process.env.VITE_TELEGRAM_CHANNEL_ID = 'test-channel-id';
-    
+
     // Mock successful response
     mockedAxios.post.mockResolvedValueOnce({ status: 200, data: { ok: true } });
-    
+
     await sendTelegramNotification(mockData);
-    
+
     // Check if axios was called with correct parameters
     expect(mockedAxios.post).toHaveBeenCalledTimes(1);
     expect(mockedAxios.post.mock.calls[0][0]).toContain('bot' + process.env.VITE_TELEGRAM_BOT_TOKEN);
-    
+
     // Check data
     const sentData = mockedAxios.post.mock.calls[0][1];
     expect(sentData).toHaveProperty('chat_id', 'test-channel-id');
@@ -47,10 +47,10 @@ describe('Telegram Service', () => {
     // Mock environment variables
     process.env.VITE_TELEGRAM_BOT_TOKEN = 'test-bot-token';
     process.env.VITE_TELEGRAM_CHANNEL_ID = 'test-channel-id';
-    
+
     // Mock error response
     mockedAxios.post.mockRejectedValueOnce(new Error('Network error'));
-    
+
     await expect(sendTelegramNotification(mockData)).rejects.toThrow('Failed to send notification');
   });
 
@@ -58,9 +58,9 @@ describe('Telegram Service', () => {
     // Clear environment variables
     delete process.env.VITE_TELEGRAM_BOT_TOKEN;
     delete process.env.VITE_TELEGRAM_CHANNEL_ID;
-    
+
     await sendTelegramNotification(mockData);
-    
+
     // Check that axios was not called
     expect(mockedAxios.post).not.toHaveBeenCalled();
   });

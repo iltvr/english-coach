@@ -1,67 +1,70 @@
-import axios from 'axios';
-import { sendEmailNotification } from '../services/email-service';
+import { sendApplication } from "../services/email-service";
 
-// Mock axios
-jest.mock('axios');
-const mockedAxios = axios as jest.Mocked<typeof axios>;
-
-describe('Email Service', () => {
+describe("Email Service (using fetch)", () => {
   const mockData = {
-    name: 'John Doe',
-    email: 'john@example.com',
-    contact: '+1234567890',
-    timeSlot: 'morning',
-    purpose: 'Business English',
-    timeframe: '3-6-months',
-    weeklyTime: '3-5',
-    experience: 'Intermediate level'
+    name: "John Doe",
+    email: "john@example.com",
+    contact: "+1234567890",
+    timeSlot: "8:00 - 12:00",
+    purpose: "Business English",
+    weeklyTime: "3-5",
+    experience: "Intermediate level",
+    termsAgreed: true,
   };
 
+  // Create a fetch mock on global
+  const globalAny: any = global;
   beforeEach(() => {
     jest.clearAllMocks();
+    globalAny.fetch = jest.fn();
   });
 
-  test('successfully sends email notification', async () => {
-    // Mock environment variables
-    process.env.VITE_EMAIL_API_ENDPOINT = 'https://api.example.com/send-email';
-    process.env.VITE_ADMIN_EMAIL = 'admin@example.com';
-    
-    // Mock successful response
-    mockedAxios.post.mockResolvedValueOnce({ status: 200, data: { success: true } });
-    
-    await sendEmailNotification(mockData);
-    
-    // Check if axios was called with correct parameters
-    expect(mockedAxios.post).toHaveBeenCalledTimes(1);
-    expect(mockedAxios.post.mock.calls[0][0]).toBe(process.env.VITE_EMAIL_API_ENDPOINT);
-    
-    // Check data
-    const sentData = mockedAxios.post.mock.calls[0][1];
-    expect(sentData).toHaveProperty('to', 'admin@example.com');
-    expect(sentData).toHaveProperty('subject', 'New English Learning Application');
-    expect(sentData.html).toContain('John Doe');
-    expect(sentData.html).toContain('john@example.com');
+  test("successfully sends email notification", async () => {
+    process.env.VITE_EMAIL_API_ENDPOINT = "https://api.example.com/send-email";
+    process.env.VITE_ADMIN_EMAIL = "admin@example.com";
+
+    // mock fetch resolving with a Response-like object
+    globalAny.fetch.mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({ success: true }),
+    });
+
+    await sendApplication(mockData);
+
+    expect(globalAny.fetch).toHaveBeenCalledTimes(1);
+
+    const [url, options] = globalAny.fetch.mock.calls[0];
+    expect(url).toBe(process.env.VITE_EMAIL_API_ENDPOINT);
+
+    // verify options
+    expect(options.method).toBe("POST");
+    expect(options.headers).toEqual({
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    });
+
+    const body = JSON.parse(options.body);
+    expect(body).toMatchObject(mockData);
   });
 
-  test('handles errors when sending email', async () => {
-    // Mock environment variables
-    process.env.VITE_EMAIL_API_ENDPOINT = 'https://api.example.com/send-email';
-    process.env.VITE_ADMIN_EMAIL = 'admin@example.com';
-    
-    // Mock error response
-    mockedAxios.post.mockRejectedValueOnce(new Error('Network error'));
-    
-    await expect(sendEmailNotification(mockData)).rejects.toThrow('Failed to send email notification');
+  test("handles errors when sending email", async () => {
+    process.env.VITE_EMAIL_API_ENDPOINT = "https://api.example.com/send-email";
+    process.env.VITE_ADMIN_EMAIL = "admin@example.com";
+
+    // mock fetch rejecting
+    globalAny.fetch.mockRejectedValueOnce(new Error("Network error"));
+
+    await expect(sendApplication(mockData)).rejects.toThrow(
+      "Failed to send email notification"
+    );
   });
 
-  test('skips API call when no API endpoint or admin email is provided', async () => {
-    // Clear environment variables
+  test("skips API call when no endpoint or admin email is provided", async () => {
     delete process.env.VITE_EMAIL_API_ENDPOINT;
     delete process.env.VITE_ADMIN_EMAIL;
-    
-    await sendEmailNotification(mockData);
-    
-    // Check that axios was not called
-    expect(mockedAxios.post).not.toHaveBeenCalled();
+
+    await sendApplication(mockData);
+
+    expect(globalAny.fetch).not.toHaveBeenCalled();
   });
 });

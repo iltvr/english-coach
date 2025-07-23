@@ -9,7 +9,6 @@ export interface ApplicationData {
   contact: string;
   timeSlot: string;
   purpose: string;
-  timeframe: string;
   weeklyTime: string;
   experience: string;
   termsAgreed: boolean;
@@ -19,7 +18,7 @@ export interface ApplicationData {
   submissionTime?: string;
 }
 
-const URL = import.meta.env.VITE_API_BASE_URL || ''; // e.g. '/api'
+const URL = process.env.VITE_API_BASE_URL || ''; // e.g. '/api'
 if (!URL) throw new Error('VITE_API_BASE_URL not defined');
 
 export async function sendApplication(data: ApplicationData) {

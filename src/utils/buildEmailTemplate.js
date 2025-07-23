@@ -50,9 +50,6 @@ export function buildEmailTemplate(data) {
               <td class="label">Purpose:</td><td>${esc(data.purpose)}</td>
             </tr>
             <tr>
-              <td class="label">Timeframe:</td><td>${esc(data.timeframe)}</td>
-            </tr>
-            <tr>
               <td class="label">Weekly Time:</td><td>${esc(data.weeklyTime)}</td>
             </tr>
             <tr>

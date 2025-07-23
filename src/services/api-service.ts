@@ -7,7 +7,6 @@ interface ApplicationData {
   contact: string;
   timeSlot: string;
   purpose: string;
-  timeframe: string;
   weeklyTime: string;
   experience: string;
   termsAgreed: boolean;

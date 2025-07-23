@@ -4,37 +4,37 @@
     "about": "About",
     "benefits": "Benefits",
     "approach": "Approach",
-    "apply": "Apply Now"
+    "apply": "Apply"
   },
   "hero": {
-    "title": "Master English with Personalized Coaching",
-    "subtitle": "Achieve your language goals with customized one-to-one lessons tailored to your specific needs",
-    "cta": "Start Your Journey"
+    "title": "Master English with a Personal Coach",
+    "subtitle": "Achieve your goals with tailored one‑on‑one lessons designed for your needs",
+    "cta": "Start Learning"
   },
   "about": {
     "title": "About Me",
-    "description": "I'm a dedicated English teacher with years of experience helping students achieve their language goals. I specialize in creating personalized learning programs that address your specific needs, whether for business, academics, or personal growth.",
+    "description": "I’m an experienced English teacher for adults who want to accomplish more: advance their careers, relocate abroad, or complete specialized training. I help each student reach their unique language goals, whether it’s improving overall fluency and confidence or tackling short‑term challenges like mastering English tenses once and for all.",
     "experience": "Years of Experience",
     "students": "Students Taught",
     "countries": "Countries"
   },
   "benefits": {
-    "title": "Benefits of Learning With Me",
+    "title": "Why Learn with Me",
     "personalized": {
       "title": "Personalized Approach",
-      "description": "Every learning program is tailored to your specific needs, goals, and learning style."
+      "description": "Every lesson plan is customized to your goals, needs, and learning style."
     },
     "flexible": {
       "title": "Flexible Schedule",
-      "description": "Choose lesson times that fit your busy schedule, with options for various time zones."
+      "description": "Pick lesson times that fit your busy life and choose between full‑hour or 30‑minute sessions multiple times per week."
     },
     "practical": {
       "title": "Practical Focus",
-      "description": "Learn English that you'll actually use in real-life situations relevant to your goals."
+      "description": "Learn the English you need for real‑world situations, tailored to your profession and objectives."
     },
     "progress": {
       "title": "Measurable Progress",
-      "description": "Regular assessments and feedback to track your improvement and adjust as needed."
+      "description": "Receive regular feedback and tracking tools to monitor your progress and adjust the program as needed."
     }
   },
   "approach": {
@@ -45,132 +45,122 @@
     },
     "step2": {
       "title": "Custom Program Design",
-      "description": "I create a personalized learning program focused on your specific needs, whether for business, academics, or daily life."
+      "description": "I design a personalized curriculum focused on your objectives and skill gaps, from “speaking fluently” to “understanding native speakers.”"
     },
     "step3": {
-      "title": "One-to-One Sessions",
-      "description": "Engage in focused, interactive lessons that provide immediate feedback and personalized attention."
+      "title": "One‑on‑One Sessions",
+      "description": "Each lesson is crafted specifically for you. It’s an integrated system, not stand‑alone classes, to reinforce and build on learned material."
     },
     "step4": {
-      "title": "Continuous Adaptation",
-      "description": "Your program evolves as you progress, ensuring you're always challenged at the right level."
+      "title": "Ongoing Adaptation",
+      "description": "Your program evolves as you progress, ensuring tasks remain at the right level of challenge."
     }
   },
   "testimonials": {
     "title": "What My Students Say",
     "testimonial1": {
-      "text": "The personalized approach made all the difference in my language learning journey. I finally feel confident speaking English in business meetings.",
-      "author": "Maria K., Marketing Professional"
+      "text": "I’m always amazed at how thoroughly you prepare each lesson and choose materials that suit me perfectly. Not a single day do I regret starting: I speak more freely, use new grammar structures, and finally watch series in English. I think faster, form sentences quicker, and respond more promptly. I feel more confident speaking English.",
+      "author": "Ekaterina, Marketer"
     },
     "testimonial2": {
-      "text": "I needed English for my university studies abroad, and these lessons prepared me perfectly. The focus on academic vocabulary was exactly what I needed.",
-      "author": "Alex T., Graduate Student"
+      "text": "Each lesson was engaging and rich in content because we discussed topics I’m truly interested in. Thanks to the relaxed atmosphere and informal style, I felt confident and expressed my thoughts more freely in English. Our interesting conversations greatly expanded my vocabulary, which positively impacted my skills.",
+      "author": "Dmitry, IT Specialist"
     },
     "testimonial3": {
-      "text": "As someone who travels frequently, I wanted to improve my conversational English. The practical focus of our lessons has made a huge difference in my confidence.",
-      "author": "David L., Business Traveler"
+      "text": "There’s no feeling of overload or fatigue in classes. Lessons are organized with modern techniques and an individual approach. I finally managed to start speaking and understanding English because the material isn’t taught in a “template” fashion.",
+      "author": "Maria, Graphic Designer"
     }
   },
   "application": {
     "title": "Start Your English Journey Today",
-    "subtitle": "Fill out the form below to begin your personalized learning experience",
+    "subtitle": "Fill out the form below to take the first step toward your goal",
     "form": {
       "nameShort": "Name",
       "emailShort": "Email",
       "contactShort": "Contact",
       "timeSlotShort": "Time Slot",
       "purposeShort": "Purpose",
-      "timeframeShort": "Goal Timeframe",
-      "weeklyTimeShort": "Weekly Hours",
+      "weeklyTimeShort": "Weekly Time",
       "experienceShort": "Experience",
       "termsAgreement": "I agree to the",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Use",
       "and": "and",
-      "termsRequired": "You must agree to the terms and conditions",
+      "termsRequired": "You must agree to the terms",
       "submit": "Submit Application",
-      "success": "Application submitted successfully! I'll contact you soon.",
-      "error": "There was an error submitting your application. Please try again.",
+      "success": "Application sent successfully! I will contact you within two business days.",
+      "error": "An error occurred while submitting. Please try again.",
       "required": "This field is required",
       "invalidEmail": "Please enter a valid email address",
-      "invalidContact": "Please enter a valid contact info",
+      "invalidContact": "Please enter a valid phone number or Telegram ID",
       "namePlaceholder": "Enter your full name",
       "emailPlaceholder": "Enter your email address",
-      "contactPlaceholder": "Enter your phone number or Telegram ID using @username format",
-      "purposePlaceholder": "Describe your purpose for learning English",
-      "experiencePlaceholder": "Describe your previous experience with English",
+      "contactPlaceholder": "Enter your phone number or Telegram ID (e.g., @username)",
+      "purposePlaceholder": "Describe your English learning goal",
+      "experiencePlaceholder": "Describe your previous English learning experience",
       "selectTimeSlot": "Select preferred time slot",
-      "selectTimeframe": "Select goal timeframe",
-      "selectWeeklyTime": "Select weekly study hours",
+      "selectWeeklyTime": "Select hours per week",
       "timeSlotOptions": {
-        "morning": "Morning",
-        "afternoon": "Afternoon",
-        "evening": "Evening",
-        "night": "Night",
-        "weekend": "Weekend"
+        "morning": "8:00–12:00",
+        "afternoon": "14:00–16:00",
+        "evening": "17:00–19:00"
       },
       "weeklyTimeOptions": {
-        "option1": "1-2 hours",
-        "option2": "3-5 hours",
-        "option3": "6-8 hours",
-        "option4": "9+ hours"
-      },
-      "timeframeOptions": {
-        "option1": "1-3 months",
-        "option2": "3-6 months",
-        "option3": "6-12 months",
-        "option4": "1-2 years",
-        "option5": "2+ years"
+        "option1": "1 hour once a week",
+        "option2": "1 hour 2–3 times a week",
+        "option3": "30 min 4–5 times a week"
       }
     }
   },
   "footer": {
-    "rights": "All Rights Reserved",
+    "rights": "All rights reserved",
     "privacy": "Privacy Policy",
-    "terms": "Terms of Service",
+    "terms": "Terms of Use",
     "contact": "Contact Me",
     "follow": "Follow Me"
   },
   "privacyPolicy": {
     "title": "Privacy Policy",
-    "lastUpdated": "Last Updated: June 1, 2023",
-    "introduction": "This Privacy Policy describes how your personal information is collected, used, and shared when you visit or submit information through this website.",
+    "lastUpdated": "Last updated: June 1, 2023",
+    "introduction": "This Privacy Policy explains how we collect, use, and share your personal information when you visit or submit information through this website.",
     "informationCollect": "Information We Collect",
-    "informationCollectText": "When you visit the website, we automatically collect certain information about your device, including information about your web browser, IP address, time zone, and some of the cookies that are installed on your device. Additionally, as you browse the website, we collect information about the individual web pages that you view, what websites or search terms referred you to the website, and information about how you interact with the website.",
+    "informationCollectText": "When you visit the site, we automatically collect certain device information, including your web browser, IP address, time zone, and cookies. We also track how you interact with the site and which pages you view.",
     "personalInfo": "Personal Information",
-    "personalInfoText": "When you fill out the application form, we collect personal information that you provide, such as your name, email address, phone number, and other contact details. We also collect information about your English learning goals and experience.",
+    "personalInfoText": "When you fill out the application form, we collect personal information you provide, such as name, email, phone number, and learning goals or experience.",
     "useInfo": "How We Use Your Information",
-    "useInfoText": "We use the information we collect to communicate with you, process your application, and provide you with personalized English teaching services. We may also use this information to improve our website and services.",
+    "useInfoText": "We use collected information to communicate with you, process your application, and provide personalized English coaching services. We may also use it to improve our website and services.",
     "shareInfo": "Sharing Your Information",
-    "shareInfoText": "We share your personal information only as necessary to provide our services, comply with applicable law, and protect our rights.",
+    "shareInfoText": "We only share your information when necessary to provide our services, comply with legal obligations, or protect our rights.",
     "dataRetention": "Data Retention",
-    "dataRetentionText": "We will maintain your personal information for our records unless and until you ask us to delete this information.",
-    "changes": "Changes",
-    "changesText": "We may update this privacy policy from time to time in order to reflect, for example, changes to our practices or for other operational, legal or regulatory reasons.",
-    "contact": "Contact",
-    "contactText": "For more information about our privacy practices, if you have questions, or if you would like to make a complaint, please contact us."
+    "dataRetentionText": "We will retain your personal information as long as necessary to fulfill the purposes described in this policy or until you request deletion.",
+    "changes": "Changes to This Policy",
+    "changesText": "We may update this policy periodically to reflect changes in practices or for legal reasons.",
+    "contact": "Contact Us",
+    "contactText": "For questions about this policy or to lodge a complaint, please contact us at the email provided on our website."
   },
   "termsOfService": {
-    "title": "Terms of Service",
-    "lastUpdated": "Last Updated: June 1, 2023",
-    "introduction": "These Terms of Service govern your use of the website and the services offered through it.",
+    "title": "Terms of Use",
+    "lastUpdated": "Last updated: June 1, 2023",
+    "introduction": "These Terms of Use govern your access to and use of this website and the services offered through it.",
     "acceptance": "Acceptance of Terms",
-    "acceptanceText": "By accessing or using the website, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the website.",
+    "acceptanceText": "By accessing or using the site, you agree to these terms. If you disagree, please do not use the site.",
     "services": "Services",
-    "servicesText": "The website provides information about English teaching services and allows you to submit an application for these services. The specific details of the services, including pricing and scheduling, will be agreed upon separately.",
+    "servicesText": "The site provides information about English coaching services and allows you to apply. Specific details such as pricing and schedule will be arranged separately.",
     "userConduct": "User Conduct",
-    "userConductText": "You agree to use the website only for lawful purposes and in a way that does not infringe the rights of, restrict or inhibit anyone else's use and enjoyment of the website.",
+    "userConductText": "You agree to use the site lawfully and without infringing on others’ rights or interfering with their use of the site.",
     "intellectualProperty": "Intellectual Property",
-    "intellectualPropertyText": "All content on this website, including text, graphics, logos, images, and software, is the property of the website owner and is protected by copyright laws.",
+    "intellectualPropertyText": "All content on this site—text, graphics, logos, images, and software—is the property of the site owner and protected by copyright laws.",
     "limitation": "Limitation of Liability",
-    "limitationText": "The website owner shall not be liable for any direct, indirect, incidental, special, consequential or exemplary damages resulting from your use or inability to use the website or services.",
+    "limitationText": "The site owner is not liable for any direct, indirect, incidental, special, consequential, or exemplary damages arising from your use of the site or services.",
     "changes": "Changes to Terms",
-    "changesText": "We reserve the right to modify these terms at any time. Your continued use of the website after any changes indicates your acceptance of the modified terms.",
+    "changesText": "We reserve the right to modify these terms at any time. Continued use indicates acceptance of revised terms.",
     "governingLaw": "Governing Law",
-    "governingLawText": "These Terms of Service shall be governed by and construed in accordance with the laws of the jurisdiction where the website owner is based.",
-    "contact": "Contact",
-    "contactText": "If you have any questions about these Terms of Service, please contact us."
+    "governingLawText": "These terms are governed by the laws of the jurisdiction where the site owner is located.",
+    "contact": "Contact Information",
+    "contactText": "If you have questions about these terms, please contact us via the email listed on our site."
   },
   "languageSelector": {
     "en": "English",
-    "ru": "Russian"
+    "ru": "Русский"
   }
 }

@@ -24,8 +24,10 @@ export const Footer: React.FC = () => {
             <h3 className="text-lg font-semibold mb-4">{t('footer.contact')}</h3>
             <ul className="space-y-2 text-default-300">
               <li className="flex items-center gap-2">
-                <Icon icon="lucide:mail" className="w-4 h-4 flex-shrink-0" />
-                <span>contact@english-coach.online</span>
+                <a href="mailto:contact@english-coach.online" className="flex items-center gap-2">
+                  <Icon icon="lucide:mail" className="w-4 h-4 flex-shrink-0" />
+                  <span>contact@english-coach.online</span>
+                </a>
               </li>
               {/* <li className="flex items-center gap-2">
                 <Icon icon="lucide:phone" className="w-4 h-4 flex-shrink-0" />
@@ -41,18 +43,18 @@ export const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">{t('footer.follow')}</h3>
             <div className="flex gap-4">
-              <a href="https://t.me/englishcoach" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary transition-colors">
+              <a href="https://t.me/olga_dubinina_pro_english" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary transition-colors">
                 <Icon icon="logos:telegram" className="w-6 h-6" />
               </a>
-              <a href="#" className="text-white hover:text-primary transition-colors">
+              <a href="https://www.instagram.com/p/DJzaCf2srH2/?utm_source=ig_web_copy_link" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary transition-colors">
                 <Icon icon="lucide:instagram" className="w-6 h-6" />
               </a>
-              <a href="#" className="text-white hover:text-primary transition-colors">
+              {/* <a href="#" className="text-white hover:text-primary transition-colors">
                 <Icon icon="lucide:facebook" className="w-6 h-6" />
               </a>
               <a href="#" className="text-white hover:text-primary transition-colors">
                 <Icon icon="lucide:linkedin" className="w-6 h-6" />
-              </a>
+              </a> */}
             </div>
           </div>
         </div>

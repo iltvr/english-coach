@@ -13,7 +13,6 @@ interface FormData {
   contact: string;
   timeSlot: string;
   purpose: string;
-  timeframe: string;
   weeklyTime: string;
   experience: string;
   termsAgreed: boolean;
@@ -46,8 +45,6 @@ export const ApplicationForm: React.FC = () => {
     { key: "morning", label: t('application.form.timeSlotOptions.morning') },
     { key: "afternoon", label: t('application.form.timeSlotOptions.afternoon') },
     { key: "evening", label: t('application.form.timeSlotOptions.evening') },
-    { key: "night", label: t('application.form.timeSlotOptions.night') },
-    { key: "weekend", label: t('application.form.timeSlotOptions.weekend') }
   ];
 
   // Define weekly time options
@@ -55,16 +52,6 @@ export const ApplicationForm: React.FC = () => {
     { key: "1-2", label: t('application.form.weeklyTimeOptions.option1') },
     { key: "3-5", label: t('application.form.weeklyTimeOptions.option2') },
     { key: "6-8", label: t('application.form.weeklyTimeOptions.option3') },
-    { key: "9+", label: t('application.form.weeklyTimeOptions.option4') }
-  ];
-
-  // Define timeframe options
-  const timeframeOptions = [
-    { key: "1-3-months", label: t('application.form.timeframeOptions.option1') },
-    { key: "3-6-months", label: t('application.form.timeframeOptions.option2') },
-    { key: "6-12-months", label: t('application.form.timeframeOptions.option3') },
-    { key: "1-2-years", label: t('application.form.timeframeOptions.option4') },
-    { key: "2-plus-years", label: t('application.form.timeframeOptions.option5') }
   ];
 
   const { control, handleSubmit, reset, watch, formState: { errors, isValid, isDirty } } = useForm<FormData>({
@@ -74,7 +61,6 @@ export const ApplicationForm: React.FC = () => {
       contact: '',
       timeSlot: '',
       purpose: '',
-      timeframe: '',
       weeklyTime: '',
       experience: '',
       termsAgreed: false
@@ -88,7 +74,6 @@ export const ApplicationForm: React.FC = () => {
   const contact = watch("contact");
   const timeSlot = watch("timeSlot");
   const purpose = watch("purpose");
-  const timeframe = watch("timeframe");
   const weeklyTime = watch("weeklyTime");
   const experience = watch("experience");
   const termsAgreed = watch("termsAgreed");
@@ -100,7 +85,6 @@ export const ApplicationForm: React.FC = () => {
     !!contact && contact.trim() !== '' &&
     !!timeSlot && timeSlot.trim() !== '' &&
     !!purpose && purpose.trim() !== '' &&
-    !!timeframe && timeframe.trim() !== '' &&
     !!weeklyTime && weeklyTime.trim() !== '' &&
     !!experience && experience.trim() !== '' &&
     termsAgreed === true;
@@ -154,11 +138,11 @@ export const ApplicationForm: React.FC = () => {
   const validateContact = (value: string) => {
     // Simple validation - should contain phone number or tg handle
     const phoneRegex = /^(\+?\d{1,3}[-.\s]?)?(\(?\d{1,4}\)?[-.\s]?)?(\d{1,4}[-.\s]?){1,3}\d{1,4}$/;
-    const tgHandleRegex = /^@?[a-zA-Z0-9_]{5,32}$/; // Telegram handle regex
+    const tgHandleRegex = /^@(?=\w{5,32}\b)[a-zA-Z0-9]+(?:_[a-zA-Z0-9]+)*.*$/; // Telegram handle regex
+
     if (phoneRegex.test(value) || tgHandleRegex.test(value)) {
       return true;
     }
-    // If neither phone nor Telegram handle is valid, return error message
 
     return t('application.form.invalidContact');
   };
@@ -233,6 +217,7 @@ export const ApplicationForm: React.FC = () => {
                       {...field}
                       label={t('application.form.contactShort')}
                       placeholder={t('application.form.contactPlaceholder')}
+                      type="text"
                       isRequired
                       errorMessage={errors.contact?.message}
                     />
@@ -280,59 +265,32 @@ export const ApplicationForm: React.FC = () => {
                   )}
                 />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Controller
-                    name="timeframe"
-                    control={control}
-                    rules={{ required: t('application.form.required') as string }}
-                    render={({ field: { onChange, value, ...restField } }) => (
-                      <Select
-                        {...restField}
-                        label={t('application.form.timeframeShort')}
-                        placeholder={t('application.form.selectTimeframe')}
-                        selectedKeys={value ? [value] : []}
-                        onSelectionChange={(keys) => {
-                          const selected = Array.from(keys)[0] as string;
-                          onChange(selected);
-                        }}
-                        isRequired
-                        errorMessage={errors.timeframe?.message}
-                      >
-                        {timeframeOptions.map((option) => (
-                          <SelectItem key={option.key} textValue={option.label}>
-                            {option.label}
-                          </SelectItem>
-                        ))}
-                      </Select>
-                    )}
-                  />
+                <Controller
+                  name="weeklyTime"
+                  control={control}
+                  rules={{ required: t('application.form.required') as string }}
+                  render={({ field: { onChange, value, ...restField } }) => (
+                    <Select
+                      {...restField}
+                      label={t('application.form.weeklyTimeShort')}
+                      placeholder={t('application.form.selectWeeklyTime')}
+                      selectedKeys={value ? [value] : []}
+                      onSelectionChange={(keys) => {
+                        const selected = Array.from(keys)[0] as string;
+                        onChange(selected);
+                      }}
+                      isRequired
+                      errorMessage={errors.weeklyTime?.message}
+                    >
+                      {weeklyTimeOptions.map((option) => (
+                        <SelectItem key={option.key} textValue={option.label}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </Select>
+                  )}
+                />
 
-                  <Controller
-                    name="weeklyTime"
-                    control={control}
-                    rules={{ required: t('application.form.required') as string }}
-                    render={({ field: { onChange, value, ...restField } }) => (
-                      <Select
-                        {...restField}
-                        label={t('application.form.weeklyTimeShort')}
-                        placeholder={t('application.form.selectWeeklyTime')}
-                        selectedKeys={value ? [value] : []}
-                        onSelectionChange={(keys) => {
-                          const selected = Array.from(keys)[0] as string;
-                          onChange(selected);
-                        }}
-                        isRequired
-                        errorMessage={errors.weeklyTime?.message}
-                      >
-                        {weeklyTimeOptions.map((option) => (
-                          <SelectItem key={option.key} textValue={option.label}>
-                            {option.label}
-                          </SelectItem>
-                        ))}
-                      </Select>
-                    )}
-                  />
-                </div>
 
                 <Controller
                   name="experience"
@@ -368,11 +326,11 @@ export const ApplicationForm: React.FC = () => {
                       <span className="text-sm">
                         {t('application.form.termsAgreement')}
                         <Link to="/privacy-policy" className="text-primary hover:underline mx-1">
-                          {t('footer.privacy')}
+                          {t('application.form.privacy')}
                         </Link>
                         {t('application.form.and')}
                         <Link to="/terms-of-service" className="text-primary hover:underline mx-1">
-                          {t('footer.terms')}
+                          {t('application.form.terms')}
                         </Link>
                       </span>
                       {errors.termsAgreed && (

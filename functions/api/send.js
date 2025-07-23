@@ -41,7 +41,7 @@ export async function onRequest(context) {
   } catch {
     return new Response('Invalid JSON', { status: 400 });
   }
-  const required = ['name','email','contact','timeSlot','purpose','timeframe','weeklyTime','experience','termsAgreed'];
+  const required = ['name','email','contact','timeSlot','purpose','weeklyTime','experience','termsAgreed'];
   for (const field of required) {
     if (data[field] == null) {
       return new Response(`Missing field: ${field}`, { status: 400 });

@@ -5,7 +5,6 @@ interface ApplicationData {
   contact: string;
   timeSlot: string;
   purpose: string;
-  timeframe: string;
   weeklyTime: string;
   experience: string;
   termsAgreed?: boolean;
@@ -38,7 +37,6 @@ const formatTelegramMessage = (data: ApplicationData): string => {
     🎯 *Learning Goals:*
     • Preferred Time Slot: ${data.timeSlot}
     • Purpose: ${data.purpose}
-    • Goal Duration: ${data.timeframe}
     • Weekly Study Time: ${data.weeklyTime}
 
     📚 *Experience:*

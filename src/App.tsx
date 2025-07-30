@@ -44,8 +44,6 @@ const App: React.FC = () => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://english-coach.online" />
         <meta property="og:title" content={t('seo.ogTitle')} />
-        <meta property="og:image:width" content="600" />
-        <meta property="og:image:height" content="315" />
         <meta property="og:description" content={t('seo.ogDescription')} />
         <meta property="og:image" content="https://english-coach.online/og-image.png" />
 

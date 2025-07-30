@@ -12,11 +12,11 @@ import { useLocation } from 'react-router-dom';
 const HomePage: React.FC = () => {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const location = useLocation();
-  
+
   React.useEffect(() => {
     // Throttle scroll event to prevent excessive function calls
     let ticking = false;
-    
+
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
@@ -30,7 +30,7 @@ const HomePage: React.FC = () => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
+
   // Handle scrolling to section when navigating from other pages
   React.useEffect(() => {
     if (location.state && location.state.scrollTo) {

@@ -172,5 +172,14 @@
   "languageSelector": {
     "en": "English",
     "ru": "Русский"
+  },
+  "seo": {
+    "title": "EnglishCoach - Personalized English Learning",
+    "description": "Achieve your language goals with customized one-to-one English lessons tailored to your specific needs. Expert coaching for business, academic, and personal growth.",
+    "keywords": "English lessons, language learning, personalized coaching, business English, academic English",
+    "ogTitle": "EnglishCoach - Master English with Expert Guidance",
+    "ogDescription": "Transform your English skills with personalized, one-on-one coaching. Perfect for business, academics, and personal growth.",
+    "twitterTitle": "EnglishCoach - Your Path to English Fluency",
+    "twitterDescription": "Unlock your potential with tailored English lessons. Expert coaching for all levels and goals."
   }
 }

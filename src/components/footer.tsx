@@ -46,8 +46,8 @@ export const Footer: React.FC = () => {
               <a href="https://t.me/olga_dubinina_pro_english" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary transition-colors">
                 <Icon icon="logos:telegram" className="w-6 h-6" />
               </a>
-              <a href="https://www.instagram.com/p/DJzaCf2srH2/?utm_source=ig_web_copy_link" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary transition-colors">
-                <Icon icon="lucide:instagram" className="w-6 h-6" />
+              <a href="https://www.instagram.com/olga_dubinina_pro_english" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary transition-colors">
+                <Icon icon="skill-icons:instagram" className="w-6 h-6" />
               </a>
               {/* <a href="#" className="text-white hover:text-primary transition-colors">
                 <Icon icon="lucide:facebook" className="w-6 h-6" />

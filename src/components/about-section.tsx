@@ -37,8 +37,9 @@ export const AboutSection: React.FC = () => {
           >
             <div className="relative rounded-lg overflow-hidden aspect-square">
               <img
-                src="https://img.heroui.chat/image/avatar?w=600&h=600&u=teacher"
+                src="/images/teacher.jpg"
                 alt="English Teacher"
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </div>

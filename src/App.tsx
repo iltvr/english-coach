@@ -40,6 +40,7 @@ const App: React.FC = () => {
         <meta name="keywords" content={t('seo.keywords')} />
 
         {/* Open Graph tags */}
+        <meta property="og:site_name" content="EnglishCoach" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://english-coach.online" />
         <meta property="og:title" content={t('seo.ogTitle')} />

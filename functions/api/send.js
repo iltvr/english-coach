@@ -48,13 +48,6 @@ export async function onRequest(context) {
     }
   }
 
-  // 4) Build HTML
-  const esc = s => String(s)
-    .replace(/&/g,'&amp;')
-    .replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;')
-    .replace(/\n/g,'<br/>');
-
   const html = buildEmailTemplate(data);
 
   // 5) Send via SMTP2GO API

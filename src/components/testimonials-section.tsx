@@ -23,9 +23,9 @@ export const TestimonialsSection: React.FC = () => {
   ];
 
   return (
-    <section className="section-padding bg-default-50">
+    <section id="testimonials" className="section-padding bg-default-50">
       <div className="container mx-auto px-4">
-        <motion.div 
+        <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -39,7 +39,7 @@ export const TestimonialsSection: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((testimonial, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

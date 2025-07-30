@@ -33,7 +33,7 @@ export const NavbarComponent: React.FC<NavbarComponentProps> = ({ isScrolled }) 
   };
 
   return (
-    <Navbar 
+    <Navbar
       isBlurred={isScrolled}
       className={`transition-all duration-300 ${isScrolled ? 'bg-white/90 shadow-sm' : 'bg-transparent'}`}
       maxWidth="xl"
@@ -55,8 +55,8 @@ export const NavbarComponent: React.FC<NavbarComponentProps> = ({ isScrolled }) 
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Button 
-            variant="light" 
+          <Button
+            variant="light"
             className="text-default-700 hover:text-primary transition-colors bg-transparent px-2 py-1 min-w-0"
             onPress={() => handleNavigation('home')}
           >
@@ -64,8 +64,8 @@ export const NavbarComponent: React.FC<NavbarComponentProps> = ({ isScrolled }) 
           </Button>
         </NavbarItem>
         <NavbarItem>
-          <Button 
-            variant="light" 
+          <Button
+            variant="light"
             className="text-default-700 hover:text-primary transition-colors bg-transparent px-2 py-1 min-w-0"
             onPress={() => handleNavigation('about')}
           >
@@ -73,8 +73,8 @@ export const NavbarComponent: React.FC<NavbarComponentProps> = ({ isScrolled }) 
           </Button>
         </NavbarItem>
         <NavbarItem>
-          <Button 
-            variant="light" 
+          <Button
+            variant="light"
             className="text-default-700 hover:text-primary transition-colors bg-transparent px-2 py-1 min-w-0"
             onPress={() => handleNavigation('benefits')}
           >
@@ -82,12 +82,21 @@ export const NavbarComponent: React.FC<NavbarComponentProps> = ({ isScrolled }) 
           </Button>
         </NavbarItem>
         <NavbarItem>
-          <Button 
-            variant="light" 
+          <Button
+            variant="light"
             className="text-default-700 hover:text-primary transition-colors bg-transparent px-2 py-1 min-w-0"
             onPress={() => handleNavigation('approach')}
           >
             {t('navigation.approach')}
+          </Button>
+        </NavbarItem>
+        <NavbarItem>
+          <Button
+            variant="light"
+            className="text-default-700 hover:text-primary transition-colors bg-transparent px-2 py-1 min-w-0"
+            onPress={() => handleNavigation('testimonials')}
+          >
+            {t('navigation.testimonials')}
           </Button>
         </NavbarItem>
       </NavbarContent>
@@ -97,8 +106,8 @@ export const NavbarComponent: React.FC<NavbarComponentProps> = ({ isScrolled }) 
           <LanguageSwitcher />
         </NavbarItem>
         <NavbarItem>
-          <Button 
-            color="primary" 
+          <Button
+            color="primary"
             variant="solid"
             onPress={() => handleNavigation('apply')}
           >

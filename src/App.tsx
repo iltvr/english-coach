@@ -1,6 +1,5 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async'
 import HomePage from './pages/home';
 import PrivacyPolicyPage from './pages/privacy-policy';
 import TermsOfServicePage from './pages/terms-of-service';
@@ -32,29 +31,6 @@ const App: React.FC = () => {
 
   return (
     <React.Fragment key={renderKey}>
-      <Helmet>
-        {/* Basic SEO tags */}
-        <html lang={i18n.language} />
-        <title>{t('seo.title')}</title>
-        <meta name="description" content={t('seo.description')} />
-        <meta name="keywords" content={t('seo.keywords')} />
-
-        {/* Open Graph tags */}
-        <meta property="og:title" content={t('seo.ogTitle')} />
-        <meta property="og:description" content={t('seo.ogDescription')} />
-        <meta property="og:image" content="https://english-coach.online/og-image.png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://english-coach.online" />
-
-        {/* Twitter Card tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={t('seo.twitterTitle')} />
-        <meta name="twitter:description" content={t('seo.twitterDescription')} />
-        <meta name="twitter:image" content="https://english-coach.online/og-image.png" />
-      </Helmet>
-
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

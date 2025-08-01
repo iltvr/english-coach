@@ -8,13 +8,13 @@
     "apply": "Apply"
   },
   "hero": {
-    "title": "Master English with a Personal Coach",
-    "subtitle": "Achieve your goals with tailored one‑on‑one lessons designed for your needs",
+    "title": "English with Olga Dubinina",
+    "subtitle": "Achieve your goals through learning English",
     "cta": "Start Learning"
   },
   "about": {
     "title": "About Me",
-    "description": "I’m an experienced English teacher for adults who want to accomplish more: advance their careers, relocate abroad, or complete specialized training. I help each student reach their unique language goals, whether it’s improving overall fluency and confidence or tackling short‑term challenges like mastering English tenses once and for all.",
+    "description": "I’m Olga Dubinina, an experienced English teacher for adults who are ready to achieve more—whether it’s advancing their careers, moving to another country, or pursuing further education. I’ll help you reach your personal language goals, whether that means improving your overall English and gaining confidence in using it, or tackling specific short-term challenges like finally mastering English tenses without confusion.",
     "experience": {
       "title": "Years of Experience",
       "value": "20+"
@@ -91,7 +91,7 @@
       "timeSlotShort": "Time Slot",
       "purposeShort": "Purpose",
       "weeklyTimeShort": "Weekly Time",
-      "experienceShort": "Experience",
+      "experienceShort": "Describe your experience learning English",
       "termsAgreement": "I agree to the",
       "privacy": "Privacy Policy",
       "terms": "Terms of Use",

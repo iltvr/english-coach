@@ -41,11 +41,6 @@ export default defineConfig(({ mode, isSsrBuild }) => {
         }
       }
     },
-    ssr: {
-      // Force CJS packages to be bundled into the SSR output rather than
-      // treated as Node externals, which avoids the named-export ESM error.
-      noExternal: ['react-helmet-async']
-    },
     ssgOptions: {
       dirStyle: 'nested',
     },

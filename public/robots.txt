@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://english-coach.online/sitemap.xml

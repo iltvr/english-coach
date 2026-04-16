@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "dev": "vite",
-    "build": "tsc --noCheck && vite-ssg build",
+    "build": "tsc --noCheck && vite-react-ssg build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "pages:dev": "wrangler pages dev ./ --local",
@@ -29,7 +29,7 @@
     "react-router-dom": "^6.22.3",
     "react-turnstile": "^1.1.4",
     "source-map-js": "^1.2.1",
-    "vite-ssg": "^28.3.0"
+    "vite-react-ssg": "^0.9.1-beta.1"
   },
   "devDependencies": {
     "@babel/core": "^7.26.10",

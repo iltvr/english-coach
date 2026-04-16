@@ -8,6 +8,7 @@ import { TestimonialsSection } from '../../components/testimonials-section';
 import { ApplicationForm } from '../../components/application-form';
 import { Footer } from '../../components/footer';
 import { useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const HomePage: React.FC = () => {
   const [isScrolled, setIsScrolled] = React.useState(false);
@@ -46,6 +47,25 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <Helmet>
+        <title>EnglishCoach — Английский с Ольгой Дубининой</title>
+        <meta
+          name="description"
+          content="Индивидуальные уроки английского с Ольгой Дубининой. Обучение для бизнеса, учёбы и личностного роста. Запишитесь на первый урок."
+        />
+        <link rel="canonical" href="https://english-coach.online/" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "EducationalOrganization",
+          "name": "English Coach — Ольга Дубинина",
+          "url": "https://english-coach.online",
+          "description": "Индивидуальные уроки английского для бизнеса, учёбы и личностного роста",
+          "founder": {
+            "@type": "Person",
+            "name": "Ольга Дубинина"
+          }
+        })}</script>
+      </Helmet>
       <NavbarComponent isScrolled={isScrolled} />
       <main className="flex-grow">
         <HeroSection />

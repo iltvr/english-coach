@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { NavbarComponent } from '../../components/navbar';
 import { Footer } from '../../components/footer';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 
 const TermsOfServicePage: React.FC = () => {
   const { t } = useTranslation();
@@ -12,6 +13,10 @@ const TermsOfServicePage: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <Helmet>
+        <title>Условия использования — EnglishCoach</title>
+        <link rel="canonical" href="https://english-coach.online/terms-of-service" />
+      </Helmet>
       <NavbarComponent isScrolled={true} />
       <main className="flex-grow">
         <div className="container mx-auto px-4 py-16">

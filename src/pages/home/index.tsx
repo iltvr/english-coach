@@ -8,7 +8,7 @@ import { TestimonialsSection } from '../../components/testimonials-section';
 import { ApplicationForm } from '../../components/application-form';
 import { Footer } from '../../components/footer';
 import { useLocation } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import { Head } from 'vite-react-ssg';
 
 const HomePage: React.FC = () => {
   const [isScrolled, setIsScrolled] = React.useState(false);
@@ -47,7 +47,7 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Helmet>
+      <Head>
         <title>EnglishCoach — Английский с Ольгой Дубининой</title>
         <meta
           name="description"
@@ -65,7 +65,7 @@ const HomePage: React.FC = () => {
             "name": "Ольга Дубинина"
           }
         })}</script>
-      </Helmet>
+      </Head>
       <NavbarComponent isScrolled={isScrolled} />
       <main className="flex-grow">
         <HeroSection />

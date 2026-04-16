@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import tsconfigPaths from "vite-tsconfig-paths";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => {
+export default defineConfig(({ mode, isSsrBuild }) => {
   // Load environment variables from .env files
   const env = loadEnv(mode, process.cwd(), '')
   // Set process.env variables for use in the application
@@ -23,7 +23,8 @@ export default defineConfig(({ mode }) => {
       minify: 'terser',
       rollupOptions: {
         output: {
-          manualChunks: {
+          // manualChunks only applies to the client build; SSR treats react as external
+          manualChunks: isSsrBuild ? undefined : {
             vendor: ['react', 'react-dom', 'react-router-dom'],
             ui: ['@heroui/react', 'framer-motion'],
             i18n: ['i18next', 'react-i18next', 'i18next-browser-languagedetector']
@@ -39,6 +40,14 @@ export default defineConfig(({ mode }) => {
           secure: false
         }
       }
+    },
+    ssr: {
+      // Force CJS packages to be bundled into the SSR output rather than
+      // treated as Node externals, which avoids the named-export ESM error.
+      noExternal: ['react-helmet-async']
+    },
+    ssgOptions: {
+      dirStyle: 'nested',
     },
     optimizeDeps: {
       include: ['react-router-dom']

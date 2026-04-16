@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { NavbarComponent } from '../../components/navbar';
 import { Footer } from '../../components/footer';
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
+import { Head } from 'vite-react-ssg';
 
 const PrivacyPolicyPage: React.FC = () => {
   const { t } = useTranslation();
@@ -13,10 +13,10 @@ const PrivacyPolicyPage: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Helmet>
+      <Head>
         <title>Политика конфиденциальности — EnglishCoach</title>
         <link rel="canonical" href="https://english-coach.online/privacy-policy" />
-      </Helmet>
+      </Head>
       <NavbarComponent isScrolled={true} />
       <main className="flex-grow">
         <div className="container mx-auto px-4 py-16">

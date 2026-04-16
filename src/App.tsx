@@ -1,7 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import { HeroUIProvider, ToastProvider } from '@heroui/react'
-import { HelmetProvider } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 
 const App: React.FC = () => {
@@ -20,14 +19,12 @@ const App: React.FC = () => {
   }, [])
 
   return (
-    <HelmetProvider>
-      <HeroUIProvider>
-        <ToastProvider />
-        <React.Fragment key={renderKey}>
-          <Outlet />
-        </React.Fragment>
-      </HeroUIProvider>
-    </HelmetProvider>
+    <HeroUIProvider>
+      <ToastProvider />
+      <React.Fragment key={renderKey}>
+        <Outlet />
+      </React.Fragment>
+    </HeroUIProvider>
   )
 }
 

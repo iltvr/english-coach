@@ -1,43 +1,34 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import HomePage from './pages/home';
-import PrivacyPolicyPage from './pages/privacy-policy';
-import TermsOfServicePage from './pages/terms-of-service';
-import { useTranslation } from 'react-i18next';
+import React from 'react'
+import { Outlet } from 'react-router-dom'
+import { HeroUIProvider, ToastProvider } from '@heroui/react'
+import { HelmetProvider } from 'react-helmet-async'
+import { useTranslation } from 'react-i18next'
 
 const App: React.FC = () => {
-  const { i18n, t } = useTranslation();
+  const { i18n } = useTranslation()
 
   React.useEffect(() => {
-    // Set the document language attribute based on the current i18n language
-    document.documentElement.lang = i18n.language;
-  }, [i18n.language]);
+    document.documentElement.lang = i18n.language
+  }, [i18n.language])
 
-  // Force re-render on language change
+  const [renderKey, setRenderKey] = React.useState(0)
+
   React.useEffect(() => {
-    const handleLanguageChange = () => {
-      // Force a re-render
-      setRenderKey(Date.now());
-    };
-
-    window.addEventListener('languageChanged', handleLanguageChange);
-
-    return () => {
-      window.removeEventListener('languageChanged', handleLanguageChange);
-    };
-  }, []);
-
-  const [renderKey, setRenderKey] = React.useState(Date.now());
+    const handleLanguageChange = () => setRenderKey(k => k + 1)
+    window.addEventListener('languageChanged', handleLanguageChange)
+    return () => window.removeEventListener('languageChanged', handleLanguageChange)
+  }, [])
 
   return (
-    <React.Fragment key={renderKey}>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-        <Route path="/terms-of-service" element={<TermsOfServicePage />} />
-      </Routes>
-    </React.Fragment>
-  );
-};
+    <HelmetProvider>
+      <HeroUIProvider>
+        <ToastProvider />
+        <React.Fragment key={renderKey}>
+          <Outlet />
+        </React.Fragment>
+      </HeroUIProvider>
+    </HelmetProvider>
+  )
+}
 
-export default App;
+export default App

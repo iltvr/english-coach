@@ -1,5 +1,4 @@
 import { ViteReactSSG } from 'vite-react-ssg'
-import App from './App'
 import { routes } from './routes'
 import './index.css'
 import './i18n'
@@ -11,4 +10,4 @@ if (typeof window !== 'undefined') {
   })
 }
 
-export const createRoot = ViteReactSSG(App, { routes })
+export const createRoot = ViteReactSSG({ routes })

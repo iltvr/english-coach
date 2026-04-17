@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Card, CardBody, Input, Textarea, Button, addToast, Select, SelectItem, Checkbox } from '@heroui/react';
+import { Card, CardBody, Input, Textarea, addToast, Select, SelectItem, Checkbox } from '@heroui/react';
+import { LoadingButton } from './LoadingButton';
 import { useForm, Controller } from 'react-hook-form';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
@@ -94,7 +95,7 @@ export const ApplicationForm: React.FC = () => {
     termsAgreed === true;
 
   const onSubmit = async (data: FormData) => {
-    // Add shorter timeout to prevent hanging on API calls
+    setIsSubmitting(true);
     const timeoutId = setTimeout(() => {
       setIsSubmitting(false);
       addToast({
@@ -364,15 +365,11 @@ export const ApplicationForm: React.FC = () => {
                 {/* {errors.turnstile && <p className="text-danger">{errors.turnstile}</p>} */}
 
                 <div className="flex justify-center">
-                  <Button
-                    type="submit"
-                    color="primary"
-                    size="lg"
-                    isLoading={isSubmitting}
+                  <LoadingButton
+                    isPending={isSubmitting}
                     isDisabled={!isFormComplete}
-                  >
-                    {t('application.form.submit')}
-                  </Button>
+                    label={t('application.form.submit')}
+                  />
                 </div>
               </form>
             </CardBody>

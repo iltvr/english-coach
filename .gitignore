@@ -103,6 +103,9 @@ typings/
 # dev environment variables file
 .dev.vars
 
+# Wrangler local state
+.wrangler/
+
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 

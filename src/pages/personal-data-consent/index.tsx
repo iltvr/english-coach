@@ -4,14 +4,14 @@ import { Footer } from '../../components/footer';
 import { Head } from 'vite-react-ssg';
 import { useTranslation } from 'react-i18next';
 
-interface TermsSection {
+interface ConsentSection {
   title: string;
   paragraphs: string[];
 }
 
-const TermsOfServicePage: React.FC = () => {
+const PersonalDataConsentPage: React.FC = () => {
   const { t } = useTranslation();
-  const sections = t('termsOfService.sections', { returnObjects: true }) as TermsSection[];
+  const sections = t('personalDataConsent.sections', { returnObjects: true }) as ConsentSection[];
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -20,17 +20,23 @@ const TermsOfServicePage: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Head>
-        <title>{t('termsOfService.title')} — EnglishCoach</title>
-        <link rel="canonical" href="https://english-coach.online/terms-of-service" />
+        <title>{t('personalDataConsent.title')} — EnglishCoach</title>
+        <link rel="canonical" href="https://english-coach.online/personal-data-consent" />
       </Head>
       <NavbarComponent isScrolled={true} />
       <main className="flex-grow">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-3xl mx-auto prose prose-lg max-w-none">
             <h1 className="text-3xl md:text-4xl font-bold font-serif mb-2">
-              {t('termsOfService.title')}
+              {t('personalDataConsent.title')}
             </h1>
-            <p className="text-sm text-default-500 mb-8">{t('termsOfService.metaDate')}</p>
+            <p className="text-sm text-default-500 mb-8">{t('personalDataConsent.metaDate')}</p>
+
+            <p className="text-default-700 mb-6">{t('personalDataConsent.intro')}</p>
+            <p
+              className="text-default-700 mb-6"
+              dangerouslySetInnerHTML={{ __html: t('personalDataConsent.operator') }}
+            />
 
             {sections.map((section, i) => (
               <div key={i} className="mb-8">
@@ -42,6 +48,10 @@ const TermsOfServicePage: React.FC = () => {
                 </div>
               </div>
             ))}
+
+            <div className="mt-8 p-4 bg-default-50 rounded-lg text-sm text-default-600">
+              <p>{t('personalDataConsent.closing')}</p>
+            </div>
           </div>
         </div>
       </main>
@@ -50,4 +60,4 @@ const TermsOfServicePage: React.FC = () => {
   );
 };
 
-export default TermsOfServicePage;
+export default PersonalDataConsentPage;

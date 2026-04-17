@@ -14,7 +14,13 @@
   </url>
   <url>
     <loc>https://english-coach.online/terms-of-service</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://english-coach.online/personal-data-consent</loc>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

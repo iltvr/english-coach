@@ -5,6 +5,7 @@ import App from './App'
 const HomePage = React.lazy(() => import('./pages/home'))
 const PrivacyPolicyPage = React.lazy(() => import('./pages/privacy-policy'))
 const TermsOfServicePage = React.lazy(() => import('./pages/terms-of-service'))
+const PersonalDataConsentPage = React.lazy(() => import('./pages/personal-data-consent'))
 
 export const routes: RouteObject[] = [
   {
@@ -13,6 +14,7 @@ export const routes: RouteObject[] = [
       { path: '/', element: <HomePage /> },
       { path: '/privacy-policy', element: <PrivacyPolicyPage /> },
       { path: '/terms-of-service', element: <TermsOfServicePage /> },
+      { path: '/personal-data-consent', element: <PersonalDataConsentPage /> },
     ],
   },
 ]

@@ -4,8 +4,9 @@ import { Icon } from '@iconify/react';
 import { useTranslation } from 'react-i18next';
 
 export const Footer: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const currentYear = new Date().getFullYear();
+  const isRussian = !i18n.language.startsWith('en');
 
   return (
     <footer className="bg-default-900 text-white py-12">
@@ -67,6 +68,11 @@ export const Footer: React.FC = () => {
             <Link to="/privacy-policy" className="text-default-400 hover:text-white text-sm transition-colors">
               {t('footer.privacy')}
             </Link>
+            {isRussian && (
+              <Link to="/personal-data-consent" className="text-default-400 hover:text-white text-sm transition-colors">
+                {t('footer.consentLabel')}
+              </Link>
+            )}
             <Link to="/terms-of-service" className="text-default-400 hover:text-white text-sm transition-colors">
               {t('footer.terms')}
             </Link>

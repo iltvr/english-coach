@@ -337,13 +337,13 @@ export const ApplicationForm: React.FC = () => {
                       >
                       </Checkbox>
                       <span className="text-sm">
-                        {t('application.form.termsAgreement')}
-                        <Link to="/privacy-policy" className="text-primary hover:underline mx-1">
-                          {t('application.form.privacy')}
+                        {t('application.form.termsConsentPrefix')}{' '}
+                        <Link to={t('application.form.termsConsentLink1Path')} className="text-primary hover:underline">
+                          {t('application.form.termsConsentLink1')}
                         </Link>
-                        {t('application.form.and')}
-                        <Link to="/terms-of-service" className="text-primary hover:underline mx-1">
-                          {t('application.form.terms')}
+                        {' '}{t('application.form.termsConsentConnector')}{' '}
+                        <Link to={t('application.form.termsConsentLink2Path')} className="text-primary hover:underline">
+                          {t('application.form.termsConsentLink2')}
                         </Link>
                       </span>
                       {errors.termsAgreed && (

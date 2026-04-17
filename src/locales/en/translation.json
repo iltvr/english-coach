@@ -98,7 +98,12 @@
       "purposeShort": "Purpose",
       "weeklyTimeShort": "Weekly Time",
       "experienceShort": "Describe your experience learning English",
-      "termsAgreement": "I agree to the",
+      "termsConsentPrefix": "I agree to the",
+      "termsConsentLink1": "Privacy Policy",
+      "termsConsentLink1Path": "/privacy-policy",
+      "termsConsentConnector": "and",
+      "termsConsentLink2": "Terms of Use",
+      "termsConsentLink2Path": "/terms-of-service",
       "marketingConsent": "I consent to receive informational and promotional newsletters",
       "privacy": "Privacy Policy",
       "terms": "Terms of Use",
@@ -142,48 +147,128 @@
     "rights": "All rights reserved",
     "privacy": "Privacy Policy",
     "terms": "Terms of Use",
+    "consentLabel": "Personal Data Consent",
     "contact": "Contact Me",
     "follow": "Follow Me"
   },
   "privacyPolicy": {
     "title": "Privacy Policy",
-    "lastUpdated": "Last updated: June 1, 2023",
-    "introduction": "This Privacy Policy explains how we collect, use, and share your personal information when you visit or submit information through this website.",
-    "informationCollect": "Information We Collect",
-    "informationCollectText": "When you visit the site, we automatically collect certain device information, including your web browser, IP address, time zone, and cookies. We also track how you interact with the site and which pages you view.",
-    "personalInfo": "Personal Information",
-    "personalInfoText": "When you fill out the application form, we collect personal information you provide, such as name, email, phone number, and learning goals or experience.",
-    "useInfo": "How We Use Your Information",
-    "useInfoText": "We use collected information to communicate with you, process your application, and provide personalized English coaching services. We may also use it to improve our website and services.",
-    "shareInfo": "Sharing Your Information",
-    "shareInfoText": "We only share your information when necessary to provide our services, comply with legal obligations, or protect our rights.",
-    "dataRetention": "Data Retention",
-    "dataRetentionText": "We will retain your personal information as long as necessary to fulfill the purposes described in this policy or until you request deletion.",
-    "changes": "Changes to This Policy",
-    "changesText": "We may update this policy periodically to reflect changes in practices or for legal reasons.",
-    "contact": "Contact Us",
-    "contactText": "For questions about this policy or to lodge a complaint, please contact us at the email provided on our website."
+    "meta": "Privacy Policy of the website https://english-coach.online/",
+    "metaDate": "Effective Date: April 17, 2026 · Operator: Olga Mikhailovna Dubinina",
+    "sections": [
+      {
+        "title": "1. General Provisions",
+        "paragraphs": [
+          "1.1. This Privacy Policy has been developed in accordance with the Constitution of the Russian Federation, Federal Law No. 152-FZ dated July 27, 2006, \"On Personal Data\", and other regulatory acts of the Russian Federation in the field of information protection.",
+          "1.2. This Policy determines the procedure for the collection, recording, systematization, accumulation, storage, clarification, extraction, use, transfer, depersonalization, blocking, deletion, and destruction of personal data, as well as the measures to ensure its security by Olga Mikhailovna Dubinina, an individual paying the tax on professional income (hereinafter referred to as the \"Operator\").",
+          "1.3. This Policy applies to all personal data processing carried out by the Operator via the website https://english-coach.online/ (hereinafter referred to as the \"Site\")."
+        ]
+      },
+      {
+        "title": "2. Categories and Scope of Processed Personal Data",
+        "paragraphs": [
+          "2.1. The Operator processes the following categories of User data:",
+          "<strong>For service provision</strong> (processing applications, identifying the User, establishing feedback, agreeing on format/schedule, and executing contracts): name; contact phone number; email address; preferred time and frequency of classes; current English proficiency level; purpose of learning English.",
+          "<strong>For technical support and security</strong> (ensuring Site operation, protection against unauthorized access, and collecting evidence of consent): IP address; browser type and version (User-Agent); time zone; date and time of form submission (Timestamp); technical logs of consent checkbox activation; cookie data.",
+          "2.2. The Operator strictly does not collect biometric personal data or special categories of personal data (race, nationality, political views, religious beliefs, health status, etc.)."
+        ]
+      },
+      {
+        "title": "3. Data Localization and Third Parties",
+        "paragraphs": [
+          "3.1. In accordance with Part 5 of Article 18 of Federal Law No. 152-FZ, the initial collection and storage of personal data of Russian Federation citizens are carried out using databases physically located on the territory of the Russian Federation (using the services of Yandex LLC).",
+          "3.2. The Operator engages Yandex LLC (email management system) and Cloudflare, Inc. (content delivery network and website protection).",
+          "3.3. <strong>Cross-border transfer:</strong> Technical personal data (metadata, IP addresses) is transferred to Cloudflare, Inc. servers in the USA to ensure network security and Site protection. This transfer is carried out after submitting a prior Notification of intent to Roskomnadzor."
+        ]
+      },
+      {
+        "title": "4. Data Retention Periods",
+        "paragraphs": [
+          "4.1. Personal data collected for service provision is processed for the duration of the training agreement and for 3 (three) years after its termination, or until the User withdraws their consent.",
+          "4.2. Technical data is stored for 1 (one) year from the moment of collection, after which it is automatically deleted or irreversibly anonymized."
+        ]
+      },
+      {
+        "title": "5. User Rights",
+        "paragraphs": [
+          "5.1. The User has the right to: receive information regarding the processing of their personal data; demand the clarification, blocking, or destruction of their personal data if it is incomplete, outdated, or inaccurate; withdraw the previously provided Consent at any time.",
+          "5.2. To exercise their rights, the User must send a written request to the Operator's contact email. The Operator is obliged to respond within 10 (ten) business days. Upon receiving a withdrawal of consent, the Operator stops processing and destroys the data within 30 (thirty) days."
+        ]
+      },
+      {
+        "title": "6. Contact Information",
+        "paragraphs": [
+          "Personal Data Operator: <strong>Olga Mikhailovna Dubinina</strong>",
+          "TIN (INN): 732591573510",
+          "Address: Domodedovo, Russian Federation",
+          "Legal Status: Self-employed individual (Tax on Professional Income)",
+          "E-mail: <a href=\"mailto:contact@english-coach.online\" style=\"color:#0ea5e9;text-decoration:underline\">contact@english-coach.online</a>"
+        ]
+      }
+    ]
   },
   "termsOfService": {
     "title": "Terms of Use",
-    "lastUpdated": "Last updated: June 1, 2023",
-    "introduction": "These Terms of Use govern your access to and use of this website and the services offered through it.",
-    "acceptance": "Acceptance of Terms",
-    "acceptanceText": "By accessing or using the site, you agree to these terms. If you disagree, please do not use the site.",
-    "services": "Services",
-    "servicesText": "The site provides information about English coaching services and allows you to apply. Specific details such as pricing and schedule will be arranged separately.",
-    "userConduct": "User Conduct",
-    "userConductText": "You agree to use the site lawfully and without infringing on others’ rights or interfering with their use of the site.",
-    "intellectualProperty": "Intellectual Property",
-    "intellectualPropertyText": "All content on this site—text, graphics, logos, images, and software—is the property of the site owner and protected by copyright laws.",
-    "limitation": "Limitation of Liability",
-    "limitationText": "The site owner is not liable for any direct, indirect, incidental, special, consequential, or exemplary damages arising from your use of the site or services.",
-    "changes": "Changes to Terms",
-    "changesText": "We reserve the right to modify these terms at any time. Continued use indicates acceptance of revised terms.",
-    "governingLaw": "Governing Law",
-    "governingLawText": "These terms are governed by the laws of the jurisdiction where the site owner is located.",
-    "contact": "Contact Information",
-    "contactText": "If you have questions about these terms, please contact us via the email listed on our site."
+    "metaDate": "Effective Date: April 17, 2026 · Operator: Olga Mikhailovna Dubinina",
+    "sections": [
+      {
+        "title": "1. General Provisions",
+        "paragraphs": [
+          "1.1. These Terms of Use govern the access to and use of the website https://english-coach.online/ (the \"Site\"), operated by Olga Mikhailovna Dubinina, a self-employed individual registered in the Russian Federation (the \"Operator\").",
+          "1.2. By accessing, browsing, or submitting forms on the Site, you agree to comply with these Terms. If you do not agree, please discontinue use of the Site immediately."
+        ]
+      },
+      {
+        "title": "2. Services Provided",
+        "paragraphs": [
+          "2.1. The Site provides information about customized 1-to-1 English coaching services and allows Users to submit applications or book introductory sessions.",
+          "2.2. The Operator reserves the right to modify, suspend, or discontinue any aspect of the Services or the Site at any time without prior notice."
+        ]
+      },
+      {
+        "title": "3. User Obligations",
+        "paragraphs": [
+          "3.1. When submitting forms or communicating with the Operator, the User agrees to provide accurate, current, and complete information.",
+          "3.2. The User agrees not to use the Site for any unlawful purpose or in any way that could damage, disable, or impair the Site.",
+          "3.3. The User must not submit any sensitive personal data (such as health information, political views, etc.) through the Site’s free-text fields."
+        ]
+      },
+      {
+        "title": "4. Intellectual Property",
+        "paragraphs": [
+          "4.1. All content on the Site, including text, graphics, logos, images, and course materials, is the property of the Operator and is protected by applicable intellectual property laws.",
+          "4.2. Users may not copy, reproduce, distribute, or create derivative works from any content without the prior written consent of the Operator."
+        ]
+      },
+      {
+        "title": "5. Privacy and Data Protection",
+        "paragraphs": [
+          "5.1. The collection and processing of personal data are governed by our Privacy Policy, which is an integral part of these Terms. By using the Site, you consent to the processing of your data as described in the Privacy Policy."
+        ]
+      },
+      {
+        "title": "6. Limitation of Liability",
+        "paragraphs": [
+          "6.1. The Operator strives to ensure the accuracy of information on the Site but does not warrant that content is error-free, complete, or current.",
+          "6.2. The Operator shall not be liable for any direct, indirect, incidental, or consequential damages arising from the use of or inability to use the Site."
+        ]
+      },
+      {
+        "title": "7. Governing Law and Dispute Resolution",
+        "paragraphs": [
+          "7.1. These Terms shall be governed by and construed in accordance with the laws of the Russian Federation.",
+          "7.2. Disputes shall be resolved through mandatory pre-trial negotiations. If unresolved within 10 (ten) calendar days, the dispute shall be submitted to the competent courts of the Russian Federation."
+        ]
+      },
+      {
+        "title": "8. Contact Information",
+        "paragraphs": [
+          "E-mail: <a href=\"mailto:contact@english-coach.online\" style=\"color:#0ea5e9;text-decoration:underline\">contact@english-coach.online</a>"
+        ]
+      }
+    ]
+  },
+  "personalDataConsent": {
   },
   "languageSelector": {
     "en": "English",

@@ -109,6 +109,7 @@
       "purposePlaceholder": "Describe your English learning goal",
       "experiencePlaceholder": "Describe your previous English learning experience",
       "selectTimeSlot": "Select preferred time slot",
+      "timeSlotNote": "Moscow time (GMT+3)",
       "selectWeeklyTime": "Select hours per week",
       "timeSlotOptions": {
         "morning": "8:00–12:00",

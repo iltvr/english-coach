@@ -234,6 +234,7 @@ export const ApplicationForm: React.FC = () => {
                       isRequired
                       isInvalid={!!errors.timeSlot}
                       errorMessage={errors.timeSlot?.message}
+                      description={t('application.form.timeSlotNote')}
                     >
                       {timeSlotOptions.map((option) => (
                         <SelectItem key={option.key} textValue={option.label}>

@@ -109,6 +109,7 @@
       "purposePlaceholder": "Опишите вашу цель изучения английского",
       "experiencePlaceholder": "Опишите ваш предыдущий опыт изучения английского",
       "selectTimeSlot": "Выберите предпочтительное время",
+      "timeSlotNote": "Московское время (GMT+3)",
       "selectWeeklyTime": "Выберите количество часов в неделю",
       "timeSlotOptions": {
         "morning": "8:00-12:00",

@@ -1,119 +1,98 @@
-# React + Tailwind
+# English Coach — Landing Site
 
-This template provides a minimal setup to get React working in Vite with HMR and ESLint rules. TailwindCSS is installed and ready to use in React components.
+Landing site for an English tutoring service. React 18 + TypeScript SPA with SSG pre-rendering, deployed on Cloudflare Pages.
 
-## References
+**Live:** https://english-coach.online
 
-- Getting started with Vite: https://vitejs.dev/guide/
-- Tailwind documentation: https://tailwindcss.com/docs/installation
+## Stack
 
-# Full-Stack Email Form (Vite + Cloudflare Pages Functions)
+- **Frontend:** React 18, TypeScript, Vite, Tailwind CSS, HeroUI
+- **SSG:** vite-react-ssg (pre-renders 3 routes at build time)
+- **Backend:** Cloudflare Pages Functions (`functions/api/send.js`)
+- **Email:** SMTP2GO HTTP API
+- **i18n:** i18next, Russian default with English fallback
 
-This repo contains:
+## Development
 
-- **Backend**: Cloudflare Pages Function at `functions/api/send.js`
-- **Frontend**: Vite + React app in `src/`
+Two terminals required:
 
-You can run both locally for development.
+```bash
+# Terminal 1 — Cloudflare Pages Functions (required for form submission)
+npm run pages:dev       # http://localhost:8788
 
-## Project Structure
-
-```
-my-landing-app/
-├── .env.example
-├── _headers
-├── functions/
-│   └── api/
-│       └── send.js
-├── public/              # Static assets
-├── src/
-│   ├── main.tsx
-│   ├── App.tsx
-│   └── services/
-│       └── email-service.ts
-├── package.json
-├── tsconfig.json
-├── vite.config.ts
-├── wrangler.toml        # ← added here
-└── README.md
+# Terminal 2 — Vite frontend
+npm run dev             # http://localhost:5173
 ```
 
-## wrangler.toml
+Vite proxies `/api` → `localhost:8788` via `vite.config.ts`.
 
-```toml
-name = "my-landing-app"
-compatibility_date = "2025-07-21"
+## Commands
 
-[functions]
-directory = "functions"
-
-[build]
-# Pages will auto-detect and build Functions
+```bash
+npm run build           # tsc + vite-react-ssg build (pre-renders HTML)
+npm run lint            # ESLint, 0 warnings allowed
+npm test                # Jest + React Testing Library
+npm test -- --testPathPattern=<file>  # single test file
+npm run pages:publish   # deploy to Cloudflare Pages production
 ```
 
 ## Environment Variables
 
-### Frontend
+Frontend (`VITE_` prefix, build-time):
 
 ```ini
 VITE_API_BASE_URL=http://localhost:8788/api
+VITE_SMTP2GO_API_KEY=
+VITE_RECIPIENT_EMAIL=
+VITE_TELEGRAM_BOT_TOKEN=
+VITE_TELEGRAM_CHAT_ID=
+VITE_TURNSTILE_SITE_KEY=
 ```
 
-### Backend (Functions)
-
-Set these secrets in Cloudflare Pages or via Wrangler CLI:
+Local secrets for Pages Functions go in `.dev.vars` (git-ignored). Production secrets set via Cloudflare Pages dashboard or:
 
 ```bash
 wrangler secret put SMTP2GO_API_KEY
-wrangler secret put SMTP2GO_FROM
-wrangler secret put TO_EMAIL
+wrangler secret put RECIPIENT_EMAIL
 ```
 
-## Development
+## Project Structure
 
-You need two terminals:
-
-1. Start Pages Functions locally
-
-  ```bash
-  npm run pages:dev
-  # or:
-  # wrangler pages dev ./ --local
-  ```
-  The function is available at `http://localhost:8788/api/send`.
-
-2. Start Vite frontend
-
-  ```bash
-  npm run dev
-  ```
-  Vite (port 5173) proxies `/api` to `http://localhost:8788/api` via `vite.config.ts`.
-
-## Testing
-
-1. Open `http://localhost:5173`.
-2. Submit the form.
-3. Check the Pages Dev terminal for logs and email status.
-4. Observe success/errors in the frontend.
-
-## Build & Deploy
-
-```bash
-# Build frontend (optional)
-npm run build
-
-# Push to GitHub
-git add .
-git commit -m "Deploy"
-git push
-# Cloudflare Pages auto-deploys on push to main
-
-# Or manually:
-npm run pages:publish
 ```
+├── functions/api/send.js       # Cloudflare Pages Function — email handler
+├── public/
+│   ├── robots.txt
+│   └── sitemap.xml
+├── src/
+│   ├── main.tsx                # ViteReactSSG entry point
+│   ├── routes.tsx              # Route definitions
+│   ├── App.tsx                 # Layout wrapper (HeroUI providers + Outlet)
+│   ├── components/
+│   │   └── application-form.tsx
+│   ├── pages/
+│   │   ├── home/
+│   │   ├── privacy-policy/
+│   │   └── terms-of-service/
+│   ├── services/
+│   │   ├── api-service.ts      # Orchestrates email + telegram
+│   │   ├── email-service.ts    # fetch POST /api/send
+│   │   └── telegram-service.ts # disabled by default
+│   ├── locales/en/ and ru/     # i18n translations
+│   └── __tests__/
+├── _headers                    # Cloudflare CORS + cache headers
+└── vite.config.ts
+```
+
+## Request Flow
+
+1. `ApplicationForm` collects 8 fields + metadata (IP via ipify.org, UA, timezone)
+2. `api-service.ts` → `email-service.ts` → `fetch POST /api/send`
+3. `functions/api/send.js` validates payload, builds HTML email, sends via SMTP2GO
+4. Telegram notification available but currently disabled in `api-service.ts`
 
 ## Troubleshooting
 
-- CORS errors: ensure `_headers` and the function include `Access-Control-Allow-Origin`.
-- Missing secrets: verify with `wrangler secret list` or the Pages Dashboard.
-- Function not reloading: restart `npm run pages:dev`.
+- **CORS errors:** check `_headers` and `functions/api/send.js` response headers — whitelist includes `english-coach.online`, `english-coach.pages.dev`, `localhost:5173`
+- **Missing secrets:** `wrangler secret list` or Cloudflare Pages dashboard
+- **Function not reloading:** restart `npm run pages:dev`
+- **SSG build fails:** check for `window`/`document` usage outside `typeof window !== 'undefined'` guards

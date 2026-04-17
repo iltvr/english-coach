@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { useTranslation } from 'react-i18next';
+import { Icon28LogoVkColor } from '@vkontakte/icons';
 
 export const Footer: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -30,10 +31,6 @@ export const Footer: React.FC = () => {
                   <span>contact@english-coach.online</span>
                 </a>
               </li>
-              {/* <li className="flex items-center gap-2">
-                <Icon icon="lucide:phone" className="w-4 h-4 flex-shrink-0" />
-                <span>+1 (555) 123-4567</span>
-              </li> */}
               <li className="flex items-center gap-2">
                 <Icon icon="lucide:map-pin" className="w-4 h-4 flex-shrink-0" />
                 <span>Online Worldwide</span>
@@ -45,10 +42,13 @@ export const Footer: React.FC = () => {
             <h3 className="text-lg font-semibold mb-4">{t('footer.follow')}</h3>
             <div className="flex gap-4">
               <a href="https://t.me/olga_dubinina_pro_english" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary transition-colors">
-                <Icon icon="logos:telegram" className="w-6 h-6" />
+                <Icon icon="logos:telegram" className="w-6 h-6" aria-label="Telegram" />
               </a>
               <a href="https://www.instagram.com/olga_dubinina_pro_english" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary transition-colors">
-                <Icon icon="skill-icons:instagram" className="w-6 h-6" />
+                <Icon icon="skill-icons:instagram" className="w-6 h-6" aria-label="Instagram" />
+              </a>
+              <a href="https://vk.com/ol.dubinina" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary transition-colors" aria-label="ВКонтакте">
+                <Icon28LogoVkColor width={24} height={24} />
               </a>
               {/* <a href="#" className="text-white hover:text-primary transition-colors">
                 <Icon icon="lucide:facebook" className="w-6 h-6" />

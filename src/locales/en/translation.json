@@ -108,6 +108,14 @@
       "contactPlaceholder": "Enter your phone number (e.g., +1 555 123 4567)",
       "purposePlaceholder": "Describe your English learning goal",
       "experiencePlaceholder": "Describe your previous English learning experience",
+      "selectPurpose": "Select your learning goal",
+      "purposeOptions": {
+        "career": "Career & Business",
+        "travel": "Travel",
+        "exam": "Exam preparation",
+        "relocation": "Relocation",
+        "personal": "Personal interest"
+      },
       "selectTimeSlot": "Select preferred time slot",
       "timeSlotNote": "Moscow time (GMT+3)",
       "selectWeeklyTime": "Select hours per week",

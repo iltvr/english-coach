@@ -108,6 +108,14 @@
       "contactPlaceholder": "Введите ваш номер телефона (например, +7 999 123 45 67)",
       "purposePlaceholder": "Опишите вашу цель изучения английского",
       "experiencePlaceholder": "Опишите ваш предыдущий опыт изучения английского",
+      "selectPurpose": "Выберите цель обучения",
+      "purposeOptions": {
+        "career": "Карьера и бизнес",
+        "travel": "Путешествия",
+        "exam": "Сдача экзамена",
+        "relocation": "Переезд",
+        "personal": "Для себя"
+      },
       "selectTimeSlot": "Выберите предпочтительное время",
       "timeSlotNote": "Московское время (GMT+3)",
       "selectWeeklyTime": "Выберите количество часов в неделю",

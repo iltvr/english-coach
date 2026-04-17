@@ -38,7 +38,7 @@ describe('ApplicationForm', () => {
     expect(screen.getByPlaceholderText(/enter your full name/i)).toBeInTheDocument();
     expect(screen.getByPlaceholderText(/enter your email address/i)).toBeInTheDocument();
     expect(screen.getByPlaceholderText(/enter your phone number/i)).toBeInTheDocument();
-    expect(screen.getByPlaceholderText(/describe your english learning goal/i)).toBeInTheDocument();
+    expect(screen.getByText(/select your learning goal/i)).toBeInTheDocument();
     expect(screen.getByText(/i agree to the/i)).toBeInTheDocument();
   });
 

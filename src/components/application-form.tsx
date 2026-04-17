@@ -41,6 +41,15 @@ export const ApplicationForm: React.FC = () => {
     setTimeZone(Intl.DateTimeFormat().resolvedOptions().timeZone);
   }, []);
 
+  // Define purpose options
+  const purposeOptions = [
+    { key: "career", label: t('application.form.purposeOptions.career') },
+    { key: "travel", label: t('application.form.purposeOptions.travel') },
+    { key: "exam", label: t('application.form.purposeOptions.exam') },
+    { key: "relocation", label: t('application.form.purposeOptions.relocation') },
+    { key: "personal", label: t('application.form.purposeOptions.personal') },
+  ];
+
   // Define time slot options
   const timeSlotOptions = [
     { key: "morning", label: t('application.form.timeSlotOptions.morning') },
@@ -101,6 +110,7 @@ export const ApplicationForm: React.FC = () => {
 
     const formDataWithExtras = {
       ...data,
+      purpose: purposeOptions.find(o => o.key === data.purpose)?.label ?? data.purpose,
       timeSlot: timeSlotOptions.find(o => o.key === data.timeSlot)?.label ?? data.timeSlot,
       weeklyTime: weeklyTimeOptions.find(o => o.key === data.weeklyTime)?.label ?? data.weeklyTime,
       ipAddress,
@@ -276,12 +286,23 @@ export const ApplicationForm: React.FC = () => {
                 <Controller
                   name="purpose"
                   control={control}
-                  render={({ field }) => (
-                    <Textarea
-                      {...field}
+                  render={({ field: { onChange, value, onBlur: _onBlur, ...restField } }) => (
+                    <Select
+                      {...restField}
                       label={t('application.form.purposeShort')}
-                      placeholder={t('application.form.purposePlaceholder')}
-                    />
+                      placeholder={t('application.form.selectPurpose')}
+                      selectedKeys={value ? [value] : []}
+                      onSelectionChange={(keys) => {
+                        const selected = Array.from(keys)[0] as string;
+                        onChange(selected);
+                      }}
+                    >
+                      {purposeOptions.map((option) => (
+                        <SelectItem key={option.key} textValue={option.label}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </Select>
                   )}
                 />
 

@@ -85,9 +85,7 @@ export const ApplicationForm: React.FC = () => {
     !!email && email.trim() !== '' &&
     !!contact && contact.trim() !== '' &&
     !!timeSlot && timeSlot.trim() !== '' &&
-    !!purpose && purpose.trim() !== '' &&
     !!weeklyTime && weeklyTime.trim() !== '' &&
-    !!experience && experience.trim() !== '' &&
     termsAgreed === true;
 
   const onSubmit = async (data: FormData) => {
@@ -245,21 +243,6 @@ export const ApplicationForm: React.FC = () => {
                   )}
                 />
 
-                <Controller
-                  name="purpose"
-                  control={control}
-                  rules={{ required: t('application.form.required') as string }}
-                  render={({ field }) => (
-                    <Textarea
-                      {...field}
-                      label={t('application.form.purposeShort')}
-                      placeholder={t('application.form.purposePlaceholder')}
-                      isRequired
-                      isInvalid={!!errors.purpose}
-                      errorMessage={errors.purpose?.message}
-                    />
-                  )}
-                />
 
                 <Controller
                   name="weeklyTime"
@@ -288,18 +271,25 @@ export const ApplicationForm: React.FC = () => {
                   )}
                 />
 
+                <Controller
+                  name="purpose"
+                  control={control}
+                  render={({ field }) => (
+                    <Textarea
+                      {...field}
+                      label={t('application.form.purposeShort')}
+                      placeholder={t('application.form.purposePlaceholder')}
+                    />
+                  )}
+                />
 
                 <Controller
                   name="experience"
                   control={control}
-                  rules={{ required: t('application.form.required') as string }}
                   render={({ field }) => (
                     <Textarea
                       {...field}
                       label={t('application.form.experienceShort')}
-                      isRequired
-                      isInvalid={!!errors.experience}
-                      errorMessage={errors.experience?.message}
                     />
                   )}
                 />

@@ -60,23 +60,29 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="border-t border-default-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-default-400 text-sm">
+        <div className="border-t border-default-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center">
+          <p className="text-default-400 text-sm order-last md:order-first mt-8 md:mt-0">
             © {currentYear} EnglishCoach. {t('footer.rights')}
           </p>
-          <div className="flex gap-6 mt-4 md:mt-0">
-            <Link to="/privacy-policy" className="text-default-400 hover:text-white text-sm transition-colors">
-              {t('footer.privacy')}
-            </Link>
-            {isRussian && (
-              <Link to="/personal-data-consent" className="text-default-400 hover:text-white text-sm transition-colors">
-                {t('footer.consentLabel')}
+          <ul className="space-y-2 md:space-y-0 md:flex md:gap-6">
+            <li>
+              <Link to="/privacy-policy" className="text-default-400 hover:text-white text-sm transition-colors">
+                {t('footer.privacy')}
               </Link>
+            </li>
+            {isRussian && (
+              <li>
+                <Link to="/personal-data-consent" className="text-default-400 hover:text-white text-sm transition-colors">
+                  {t('footer.consentLabel')}
+                </Link>
+              </li>
             )}
-            <Link to="/terms-of-service" className="text-default-400 hover:text-white text-sm transition-colors">
-              {t('footer.terms')}
-            </Link>
-          </div>
+            <li>
+              <Link to="/terms-of-service" className="text-default-400 hover:text-white text-sm transition-colors">
+                {t('footer.terms')}
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
     </footer>

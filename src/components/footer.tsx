@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
               EnglishCoach
             </Link>
             <p className="text-default-300 mt-4 max-w-xs">
-              Personalized English coaching to help you achieve your language goals.
+              {t('footer.tagline')}
             </p>
           </div>
 

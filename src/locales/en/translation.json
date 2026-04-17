@@ -1,4 +1,10 @@
 {
+  "cookies": {
+    "notice": "We use cookies to improve your experience on our site. Essential cookies are always active. You can accept all cookies or limit them to essential only.",
+    "learnMore": "Privacy Policy",
+    "acceptAll": "Accept All",
+    "essentialOnly": "Essential Only"
+  },
   "navigation": {
     "home": "Home",
     "about": "About",

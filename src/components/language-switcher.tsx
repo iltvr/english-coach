@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 export const LanguageSwitcher: React.FC = () => {
   const { i18n, t } = useTranslation();
-  const isEnglish = i18n.language === 'en';
+  const isEnglish = i18n.language.startsWith('en');
   
   const toggleLanguage = () => {
     const newLang = isEnglish ? 'ru' : 'en';

@@ -17,6 +17,7 @@ interface FormData {
   weeklyTime: string;
   experience: string;
   termsAgreed: boolean;
+  marketingConsent: boolean;
 }
 
 export const ApplicationForm: React.FC = () => {
@@ -73,7 +74,8 @@ export const ApplicationForm: React.FC = () => {
       purpose: '',
       weeklyTime: '',
       experience: '',
-      termsAgreed: false
+      termsAgreed: false,
+      marketingConsent: false
     },
     mode: "onTouched"
   });
@@ -351,6 +353,23 @@ export const ApplicationForm: React.FC = () => {
                   )}
                 />
 
+
+                <Controller
+                  name="marketingConsent"
+                  control={control}
+                  render={({ field: { onChange, value, ...restField } }) => (
+                    <div className="mt-2">
+                      <Checkbox
+                        {...restField}
+                        isSelected={value}
+                        onValueChange={onChange}
+                        color="primary"
+                      >
+                        <span className="text-sm">{t('application.form.marketingConsent')}</span>
+                      </Checkbox>
+                    </div>
+                  )}
+                />
 
                 {/* <Turnstile
                   sitekey={process.env.VITE_TURNSTILE_SITE_KEY || ''}

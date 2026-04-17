@@ -58,6 +58,9 @@ export function buildEmailTemplate(data) {
             <tr>
               <td class="label">Terms Agreed:</td><td>${data.termsAgreed ? 'Yes' : 'No'}</td>
             </tr>
+            <tr>
+              <td class="label">Marketing:</td><td>${data.marketingConsent ? 'Yes' : 'No'}</td>
+            </tr>
           </table>
 
           <hr>

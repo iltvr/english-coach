@@ -12,56 +12,43 @@ describe("Email Service (using fetch)", () => {
     termsAgreed: true,
   };
 
-  // Create a fetch mock on global
   const globalAny: any = global;
+
   beforeEach(() => {
     jest.clearAllMocks();
     globalAny.fetch = jest.fn();
+    process.env.VITE_API_BASE_URL = "/api";
   });
 
-  test("successfully sends email notification", async () => {
-    process.env.VITE_EMAIL_API_ENDPOINT = "https://api.example.com/send-email";
-    process.env.VITE_ADMIN_EMAIL = "admin@example.com";
+  afterEach(() => {
+    delete process.env.VITE_API_BASE_URL;
+  });
 
-    // mock fetch resolving with a Response-like object
-    globalAny.fetch.mockResolvedValueOnce({
-      ok: true,
-      json: async () => ({ success: true }),
-    });
+  test("successfully sends application", async () => {
+    globalAny.fetch.mockResolvedValueOnce({ ok: true });
 
     await sendApplication(mockData);
 
     expect(globalAny.fetch).toHaveBeenCalledTimes(1);
-
     const [url, options] = globalAny.fetch.mock.calls[0];
-    expect(url).toBe(process.env.VITE_EMAIL_API_ENDPOINT);
-
-    // verify options
+    expect(url).toBe("/api/send");
     expect(options.method).toBe("POST");
-    expect(options.headers).toEqual({
-      "Content-Type": "application/json",
-      Accept: "application/json"
+    expect(options.headers).toEqual({ "Content-Type": "application/json" });
+    expect(JSON.parse(options.body)).toMatchObject(mockData);
+  });
+
+  test("throws on non-ok response", async () => {
+    globalAny.fetch.mockResolvedValueOnce({
+      ok: false,
+      status: 500,
+      text: async () => "Server error",
     });
 
-    const body = JSON.parse(options.body);
-    expect(body).toMatchObject(mockData);
+    await expect(sendApplication(mockData)).rejects.toThrow("API 500: Server error");
   });
 
-  test("handles errors when sending email", async () => {
-    process.env.VITE_EMAIL_API_ENDPOINT = "https://api.example.com/send-email";
-    process.env.VITE_ADMIN_EMAIL = "admin@example.com";
-
-    // mock fetch rejecting
-    globalAny.fetch.mockRejectedValueOnce(new Error("Network error"));
-
-    await expect(sendApplication(mockData)).rejects.toThrow(
-      "Failed to send email notification"
-    );
-  });
-
-  test("skips API call when no endpoint or admin email is provided", async () => {
-    delete process.env.VITE_EMAIL_API_ENDPOINT;
-    delete process.env.VITE_ADMIN_EMAIL;
+  test("skips fetch when VITE_API_BASE_URL is not set", async () => {
+    delete process.env.VITE_API_BASE_URL;
 
     await sendApplication(mockData);
 

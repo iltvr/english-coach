@@ -38,7 +38,7 @@ describe('Telegram Service', () => {
     // Check data
     const sentData = mockedAxios.post.mock.calls[0][1];
     expect(sentData).toHaveProperty('chat_id', 'test-channel-id');
-    expect(sentData).toHaveProperty('parse_mode', 'HTML');
+    expect(sentData).toHaveProperty('parse_mode', 'Markdown');
     expect(sentData.text).toContain('John Doe');
     expect(sentData.text).toContain('john@example.com');
   });

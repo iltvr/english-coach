@@ -14,11 +14,6 @@ interface ApplicationData {
   submissionTime?: string;
 }
 
-// Telegram Bot configuration
-const TELEGRAM_BOT_TOKEN = process.env.VITE_TELEGRAM_BOT_TOKEN || '';
-const TELEGRAM_CHANNEL_ID = process.env.VITE_TELEGRAM_CHANNEL_ID || '';
-
-
 /**
  * Formats the application data into a readable HTML message for Telegram
  *
@@ -57,7 +52,10 @@ const formatTelegramMessage = (data: ApplicationData): string => {
  */
 
 export const sendTelegramNotification = async (data: ApplicationData): Promise<void> => {
-  if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHANNEL_ID) {
+  const token = process.env.VITE_TELEGRAM_BOT_TOKEN || '';
+  const channelId = process.env.VITE_TELEGRAM_CHANNEL_ID || '';
+
+  if (!token || !channelId) {
     console.log('Demo mode: Telegram notification skipped - no bot token or channel ID provided');
     return Promise.resolve();
   }
@@ -66,9 +64,9 @@ export const sendTelegramNotification = async (data: ApplicationData): Promise<v
     const message = formatTelegramMessage(data);
 
     const response = await axios.post(
-      `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+      `https://api.telegram.org/bot${token}/sendMessage`,
       {
-        chat_id: TELEGRAM_CHANNEL_ID,
+        chat_id: channelId,
         text: message,
         parse_mode: 'Markdown'
       },

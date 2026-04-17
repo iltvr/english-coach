@@ -17,6 +17,7 @@ export async function onRequest(context) {
     'http://localhost:5173'
   ];
   const acao = allowed.includes(origin) ? origin : 'null';
+  const corsHeaders = { 'Access-Control-Allow-Origin': acao };
 
   // Preflight
   if (request.method === 'OPTIONS') {
@@ -31,50 +32,58 @@ export async function onRequest(context) {
   }
 
   if (request.method !== 'POST') {
-    return new Response('Method Not Allowed', { status: 405 });
+    return new Response('Method Not Allowed', { status: 405, headers: corsHeaders });
   }
 
-  // 2) Parse & validate JSON
+  // 2) Check env vars
+  if (!env.VITE_SMTP2GO_API_KEY || !env.VITE_SMTP2GO_FROM || !env.VITE_TO_EMAIL) {
+    return new Response('Server misconfiguration: missing email credentials', { status: 500, headers: corsHeaders });
+  }
+
+  // 3) Parse & validate JSON
   let data;
   try {
     data = await request.json();
   } catch {
-    return new Response('Invalid JSON', { status: 400 });
+    return new Response('Invalid JSON', { status: 400, headers: corsHeaders });
   }
-  const required = ['name','email','contact','timeSlot','purpose','weeklyTime','experience','termsAgreed'];
+
+  const required = ['name', 'email', 'contact', 'timeSlot', 'weeklyTime', 'termsAgreed'];
   for (const field of required) {
     if (data[field] == null) {
-      return new Response(`Missing field: ${field}`, { status: 400 });
+      return new Response(`Missing field: ${field}`, { status: 400, headers: corsHeaders });
     }
   }
 
-  const html = buildEmailTemplate(data);
-
-  // 5) Send via SMTP2GO API
-  const payload = {
-    api_key:    env.VITE_SMTP2GO_API_KEY,
-    sender:     env.VITE_SMTP2GO_FROM,
-    to:         [ env.VITE_TO_EMAIL ],
-    subject:    `[Application] ${data.name}`,
-    html_body:  html
-  };
-
-  const resp = await fetch('https://api.smtp2go.com/v3/email/send', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  });
+  // 4) Send via SMTP2GO API
+  let resp;
+  try {
+    const html = buildEmailTemplate(data);
+    resp = await fetch('https://api.smtp2go.com/v3/email/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        api_key:   env.VITE_SMTP2GO_API_KEY,
+        sender:    env.VITE_SMTP2GO_FROM,
+        to:        [env.VITE_TO_EMAIL],
+        subject:   `[Application] ${data.name}`,
+        html_body: html
+      })
+    });
+  } catch (err) {
+    return new Response(`Mail send failed: ${err.message}`, { status: 502, headers: corsHeaders });
+  }
 
   if (!resp.ok) {
     const err = await resp.text();
-    return new Response(`Mail error ${resp.status}: ${err}`, { status: 502 });
+    return new Response(`Mail error ${resp.status}: ${err}`, { status: 502, headers: corsHeaders });
   }
 
   return new Response(JSON.stringify({ status: 'sent' }), {
     status: 200,
     headers: {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': acao
+      ...corsHeaders
     }
   });
 }

@@ -47,10 +47,10 @@ export function buildEmailTemplate(data) {
               <td class="label">Time Slot:</td><td>${esc(data.timeSlot)}</td>
             </tr>
             <tr>
-              <td class="label">Purpose:</td><td>${esc(data.purpose)}</td>
+            <td class="label">Weekly Time:</td><td>${esc(data.weeklyTime)}</td>
             </tr>
             <tr>
-              <td class="label">Weekly Time:</td><td>${esc(data.weeklyTime)}</td>
+              <td class="label">Purpose:</td><td>${esc(data.purpose)}</td>
             </tr>
             <tr>
               <td class="label">Experience:</td><td>${esc(data.experience)}</td>

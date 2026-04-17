@@ -101,6 +101,8 @@ export const ApplicationForm: React.FC = () => {
 
     const formDataWithExtras = {
       ...data,
+      timeSlot: timeSlotOptions.find(o => o.key === data.timeSlot)?.label ?? data.timeSlot,
+      weeklyTime: weeklyTimeOptions.find(o => o.key === data.weeklyTime)?.label ?? data.weeklyTime,
       ipAddress,
       browserInfo,
       timeZone,

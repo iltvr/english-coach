@@ -7,7 +7,7 @@ Landing site for an English tutoring service. React 18 + TypeScript SPA with SSG
 ## Stack
 
 - **Frontend:** React 18, TypeScript, Vite, Tailwind CSS, HeroUI
-- **SSG:** vite-react-ssg (pre-renders 3 routes at build time)
+- **SSG:** vite-react-ssg (pre-renders 4 routes at build time)
 - **Backend:** Cloudflare Pages Functions (`functions/api/send.js`)
 - **Email:** SMTP2GO HTTP API
 - **i18n:** i18next, Russian default with English fallback
@@ -71,8 +71,9 @@ wrangler secret put RECIPIENT_EMAIL
 │   │   └── application-form.tsx
 │   ├── pages/
 │   │   ├── home/
-│   │   ├── privacy-policy/
-│   │   └── terms-of-service/
+│   │   ├── privacy-policy/        # bilingual via i18n sections array
+│   │   ├── terms-of-service/      # bilingual via i18n sections array
+│   │   └── personal-data-consent/ # Russian only
 │   ├── services/
 │   │   ├── api-service.ts      # Orchestrates email + telegram
 │   │   ├── email-service.ts    # fetch POST /api/send
@@ -85,7 +86,7 @@ wrangler secret put RECIPIENT_EMAIL
 
 ## Request Flow
 
-1. `ApplicationForm` collects 8 fields + metadata (IP via ipify.org, UA, timezone)
+1. `ApplicationForm` collects name/email/contact (required) + timeSlot/weeklyTime/purpose/experience/marketingConsent (optional) + metadata (IP via ipify.org, UA, timezone)
 2. `api-service.ts` → `email-service.ts` → `fetch POST /api/send`
 3. `functions/api/send.js` validates payload, builds HTML email, sends via SMTP2GO
 4. Telegram notification available but currently disabled in `api-service.ts`

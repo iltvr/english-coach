@@ -5,6 +5,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { submitApplication } from '../services/api-service';
+import { isValidEmail, isValidPhone } from '../utils/form-validators';
 import Turnstile from 'react-turnstile';
 
 interface FormData {
@@ -130,15 +131,11 @@ export const ApplicationForm: React.FC = () => {
     }
   };
 
-  const validateEmail = (value: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(value) || t('application.form.invalidEmail');
-  };
+  const validateEmail = (value: string) =>
+    isValidEmail(value) || t('application.form.invalidEmail');
 
-  const validateContact = (value: string) => {
-    const phoneRegex = /^\+?[\d\s\-().]{7,20}$/;
-    return phoneRegex.test(value.trim()) || t('application.form.invalidContact');
-  };
+  const validateContact = (value: string) =>
+    isValidPhone(value) || t('application.form.invalidContact');
 
   return (
     <section id="apply" className="section-padding bg-content1">

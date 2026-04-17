@@ -84,8 +84,6 @@ export const ApplicationForm: React.FC = () => {
   const name = watch("name");
   const email = watch("email");
   const contact = watch("contact");
-  const purpose = watch("purpose");
-  const experience = watch("experience");
   const termsAgreed = watch("termsAgreed");
 
   // Fix: Correctly check if all required fields are filled

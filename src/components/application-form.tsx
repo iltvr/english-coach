@@ -84,9 +84,7 @@ export const ApplicationForm: React.FC = () => {
   const name = watch("name");
   const email = watch("email");
   const contact = watch("contact");
-  const timeSlot = watch("timeSlot");
   const purpose = watch("purpose");
-  const weeklyTime = watch("weeklyTime");
   const experience = watch("experience");
   const termsAgreed = watch("termsAgreed");
 
@@ -95,8 +93,6 @@ export const ApplicationForm: React.FC = () => {
     !!name && name.trim() !== '' &&
     !!email && email.trim() !== '' &&
     !!contact && contact.trim() !== '' &&
-    !!timeSlot && timeSlot.trim() !== '' &&
-    !!weeklyTime && weeklyTime.trim() !== '' &&
     termsAgreed === true;
 
   const onSubmit = async (data: FormData) => {
@@ -232,7 +228,6 @@ export const ApplicationForm: React.FC = () => {
                 <Controller
                   name="timeSlot"
                   control={control}
-                  rules={{ required: t('application.form.required') as string }}
                   render={({ field: { onChange, value, onBlur: _onBlur, ...restField } }) => (
                     <Select
                       {...restField}
@@ -243,9 +238,6 @@ export const ApplicationForm: React.FC = () => {
                         const selected = Array.from(keys)[0] as string;
                         onChange(selected);
                       }}
-                      isRequired
-                      isInvalid={!!errors.timeSlot}
-                      errorMessage={errors.timeSlot?.message}
                       description={t('application.form.timeSlotNote')}
                     >
                       {timeSlotOptions.map((option) => (
@@ -261,7 +253,6 @@ export const ApplicationForm: React.FC = () => {
                 <Controller
                   name="weeklyTime"
                   control={control}
-                  rules={{ required: t('application.form.required') as string }}
                   render={({ field: { onChange, value, onBlur: _onBlur, ...restField } }) => (
                     <Select
                       {...restField}
@@ -272,9 +263,6 @@ export const ApplicationForm: React.FC = () => {
                         const selected = Array.from(keys)[0] as string;
                         onChange(selected);
                       }}
-                      isRequired
-                      isInvalid={!!errors.weeklyTime}
-                      errorMessage={errors.weeklyTime?.message}
                     >
                       {weeklyTimeOptions.map((option) => (
                         <SelectItem key={option.key} textValue={option.label}>

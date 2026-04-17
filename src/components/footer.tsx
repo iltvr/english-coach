@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { useTranslation } from 'react-i18next';
-import { Icon28LogoVkColor } from '@vkontakte/icons';
+import { VkIcon } from './icons/VkIcon';
 
 export const Footer: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -48,7 +48,7 @@ export const Footer: React.FC = () => {
                 <Icon icon="skill-icons:instagram" className="w-6 h-6" aria-label="Instagram" />
               </a>
               <a href="https://vk.com/ol.dubinina" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary transition-colors" aria-label="ВКонтакте">
-                <Icon28LogoVkColor width={24} height={24} />
+                <VkIcon width={24} height={24} />
               </a>
               {/* <a href="#" className="text-white hover:text-primary transition-colors">
                 <Icon icon="lucide:facebook" className="w-6 h-6" />

@@ -65,7 +65,7 @@ export const ApplicationForm: React.FC = () => {
       experience: '',
       termsAgreed: false
     },
-    mode: "all" // Changed from "onChange" to "all" to validate on all events
+    mode: "onTouched"
   });
 
   // Fix: Properly watch all required fields
@@ -136,15 +136,8 @@ export const ApplicationForm: React.FC = () => {
   };
 
   const validateContact = (value: string) => {
-    // Simple validation - should contain phone number or tg handle
-    const phoneRegex = /^(\+?\d{1,3}[-.\s]?)?(\(?\d{1,4}\)?[-.\s]?)?(\d{1,4}[-.\s]?){1,3}\d{1,4}$/;
-    const tgHandleRegex = /^@(?=\w{5,32}\b)[a-zA-Z0-9]+(?:_[a-zA-Z0-9]+)*.*$/; // Telegram handle regex
-
-    if (phoneRegex.test(value) || tgHandleRegex.test(value)) {
-      return true;
-    }
-
-    return t('application.form.invalidContact');
+    const phoneRegex = /^\+?[\d\s\-().]{7,20}$/;
+    return phoneRegex.test(value.trim()) || t('application.form.invalidContact');
   };
 
   return (
@@ -180,6 +173,7 @@ export const ApplicationForm: React.FC = () => {
                         label={t('application.form.nameShort')}
                         placeholder={t('application.form.namePlaceholder')}
                         isRequired
+                        isInvalid={!!errors.name}
                         errorMessage={errors.name?.message}
                       />
                     )}
@@ -199,6 +193,7 @@ export const ApplicationForm: React.FC = () => {
                         placeholder={t('application.form.emailPlaceholder')}
                         type="email"
                         isRequired
+                        isInvalid={!!errors.email}
                         errorMessage={errors.email?.message}
                       />
                     )}
@@ -217,8 +212,9 @@ export const ApplicationForm: React.FC = () => {
                       {...field}
                       label={t('application.form.contactShort')}
                       placeholder={t('application.form.contactPlaceholder')}
-                      type="text"
+                      type="tel"
                       isRequired
+                      isInvalid={!!errors.contact}
                       errorMessage={errors.contact?.message}
                     />
                   )}
@@ -228,7 +224,7 @@ export const ApplicationForm: React.FC = () => {
                   name="timeSlot"
                   control={control}
                   rules={{ required: t('application.form.required') as string }}
-                  render={({ field: { onChange, value, ...restField } }) => (
+                  render={({ field: { onChange, value, onBlur: _onBlur, ...restField } }) => (
                     <Select
                       {...restField}
                       label={t('application.form.timeSlotShort')}
@@ -239,6 +235,7 @@ export const ApplicationForm: React.FC = () => {
                         onChange(selected);
                       }}
                       isRequired
+                      isInvalid={!!errors.timeSlot}
                       errorMessage={errors.timeSlot?.message}
                     >
                       {timeSlotOptions.map((option) => (
@@ -260,6 +257,7 @@ export const ApplicationForm: React.FC = () => {
                       label={t('application.form.purposeShort')}
                       placeholder={t('application.form.purposePlaceholder')}
                       isRequired
+                      isInvalid={!!errors.purpose}
                       errorMessage={errors.purpose?.message}
                     />
                   )}
@@ -269,7 +267,7 @@ export const ApplicationForm: React.FC = () => {
                   name="weeklyTime"
                   control={control}
                   rules={{ required: t('application.form.required') as string }}
-                  render={({ field: { onChange, value, ...restField } }) => (
+                  render={({ field: { onChange, value, onBlur: _onBlur, ...restField } }) => (
                     <Select
                       {...restField}
                       label={t('application.form.weeklyTimeShort')}
@@ -280,6 +278,7 @@ export const ApplicationForm: React.FC = () => {
                         onChange(selected);
                       }}
                       isRequired
+                      isInvalid={!!errors.weeklyTime}
                       errorMessage={errors.weeklyTime?.message}
                     >
                       {weeklyTimeOptions.map((option) => (
@@ -301,6 +300,7 @@ export const ApplicationForm: React.FC = () => {
                       {...field}
                       label={t('application.form.experienceShort')}
                       isRequired
+                      isInvalid={!!errors.experience}
                       errorMessage={errors.experience?.message}
                     />
                   )}

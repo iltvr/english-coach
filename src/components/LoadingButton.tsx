@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Spinner } from '@heroui/react';
+import { Button } from '@heroui/react';
+import { useTranslation } from 'react-i18next';
 
 interface LoadingButtonProps {
   isPending: boolean;
@@ -7,16 +8,17 @@ interface LoadingButtonProps {
   label: string;
 }
 
-export const LoadingButton: React.FC<LoadingButtonProps> = ({ isPending, isDisabled, label }) => (
-  <Button
-    type="submit"
-    color="primary"
-    size="lg"
-    isLoading={isPending}
-    isDisabled={isDisabled}
->
-    {isPending ? <>
-      Submitting...
-    </> : label}
-  </Button>
-);
+export const LoadingButton: React.FC<LoadingButtonProps> = ({ isPending, isDisabled, label }) => {
+  const { t } = useTranslation();
+  return (
+    <Button
+      type="submit"
+      color="primary"
+      size="lg"
+      isLoading={isPending}
+      isDisabled={isDisabled}
+    >
+      {isPending ? t('components.loadingButton.submitting') : label}
+    </Button>
+  );
+};

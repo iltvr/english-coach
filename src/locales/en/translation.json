@@ -283,5 +283,10 @@
     "ogDescription": "Transform your English skills with personalized, one-on-one coaching. Perfect for business, academics, and personal growth.",
     "twitterTitle": "EnglishCoach - Your Path to English Fluency",
     "twitterDescription": "Unlock your potential with tailored English lessons. Expert coaching for all levels and goals."
+  },
+  "components": {
+    "loadingButton": {
+      "submitting": "Submitting..."
+    }
   }
 }

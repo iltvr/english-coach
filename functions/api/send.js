@@ -48,11 +48,14 @@ export async function onRequest(context) {
     return new Response('Invalid JSON', { status: 400, headers: corsHeaders });
   }
 
-  const required = ['name', 'email', 'contact', 'timeSlot', 'weeklyTime', 'termsAgreed'];
+  const required = ['name', 'email', 'contact', 'timeSlot', 'weeklyTime'];
   for (const field of required) {
     if (data[field] == null) {
       return new Response(`Missing field: ${field}`, { status: 400, headers: corsHeaders });
     }
+  }
+  if (data.termsAgreed !== true) {
+    return new Response('Terms must be agreed', { status: 400, headers: corsHeaders });
   }
 
   // 4) Send via SMTP2GO API

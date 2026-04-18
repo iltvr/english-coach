@@ -340,7 +340,6 @@ export const ApplicationForm: React.FC = () => {
                   )}
                 />
 
-
                 <Controller
                   name="marketingConsent"
                   control={control}
@@ -352,8 +351,8 @@ export const ApplicationForm: React.FC = () => {
                         onValueChange={onChange}
                         color="primary"
                       >
-                        <span className="text-sm">{t('application.form.marketingConsent')}</span>
                       </Checkbox>
+                      <span className="text-sm">{t('application.form.marketingConsent')}</span>
                     </div>
                   )}
                 />

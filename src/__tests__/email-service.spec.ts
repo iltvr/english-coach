@@ -47,11 +47,10 @@ describe("Email Service (using fetch)", () => {
     await expect(sendApplication(mockData)).rejects.toThrow("API 500: Server error");
   });
 
-  test("skips fetch when VITE_API_BASE_URL is not set", async () => {
+  test("throws when VITE_API_BASE_URL is not set", async () => {
     delete process.env.VITE_API_BASE_URL;
 
-    await sendApplication(mockData);
-
+    await expect(sendApplication(mockData)).rejects.toThrow('VITE_API_BASE_URL is not configured');
     expect(globalAny.fetch).not.toHaveBeenCalled();
   });
 });

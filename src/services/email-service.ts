@@ -20,7 +20,7 @@ export interface ApplicationData {
 
 export async function sendApplication(data: ApplicationData) {
   const url = process.env.VITE_API_BASE_URL || '';
-  if (!url) return;
+  if (!url) throw new Error('VITE_API_BASE_URL is not configured');
 
   const res = await fetch(`${url}/send`, {
     method: 'POST',

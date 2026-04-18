@@ -117,7 +117,7 @@ export const NavbarComponent: React.FC<NavbarComponentProps> = ({ isScrolled }) 
       </NavbarContent>
 
       <NavbarMenu>
-        {['home', 'about', 'benefits', 'approach'].map((item) => (
+        {['home', 'about', 'benefits', 'approach', 'testimonials', 'apply'].map((item) => (
           <NavbarMenuItem key={item}>
             <Button
               className="w-full justify-start"

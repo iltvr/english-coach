@@ -1,22 +1,10 @@
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tsconfigPaths from "vite-tsconfig-paths";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode, isSsrBuild }) => {
-  // Load environment variables from .env files
-  const env = loadEnv(mode, process.cwd(), '')
-  // Set process.env variables for use in the application
-  for (const key in env) {
-    if (key.startsWith('VITE_')) {
-      process.env[key] = env[key]
-    }
-  }
-
+export default defineConfig(({ isSsrBuild }) => {
   return {
-    define: {
-      'process.env': process.env
-    },
     plugins: [react(), tsconfigPaths()],
     build: {
       sourcemap: true,

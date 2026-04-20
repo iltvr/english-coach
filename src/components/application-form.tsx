@@ -358,7 +358,7 @@ export const ApplicationForm: React.FC = () => {
                 />
 
                 {/* <Turnstile
-                  sitekey={process.env.VITE_TURNSTILE_SITE_KEY || ''}
+                  sitekey={import.meta.env.VITE_TURNSTILE_SITE_KEY || ''}
                   onVerify={(token) => setTurnstileToken(token)}
                 /> */}
                 {/* {errors.turnstile && <p className="text-danger">{errors.turnstile}</p>} */}

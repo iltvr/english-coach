@@ -7,6 +7,6 @@ module.exports = {
   setupFiles: ["<rootDir>/src/test-setup.js"],
   testPathIgnorePatterns: ["/node_modules/", "<rootDir>/src/__tests__/setup\\.js$"],
   transform: {
-    "^.+\\.tsx?$": ["ts-jest", { tsconfig: { esModuleInterop: true } }],
+    "^.+\\.tsx?$": "<rootDir>/jest-import-meta-transform.cjs",
   },
 };

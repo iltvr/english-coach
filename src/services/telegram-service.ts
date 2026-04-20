@@ -52,8 +52,8 @@ const formatTelegramMessage = (data: ApplicationData): string => {
  */
 
 export const sendTelegramNotification = async (data: ApplicationData): Promise<void> => {
-  const token = process.env.VITE_TELEGRAM_BOT_TOKEN || '';
-  const channelId = process.env.VITE_TELEGRAM_CHANNEL_ID || '';
+  const token = import.meta.env.VITE_TELEGRAM_BOT_TOKEN || '';
+  const channelId = import.meta.env.VITE_TELEGRAM_CHANNEL_ID || '';
 
   if (!token || !channelId) {
     console.log('Demo mode: Telegram notification skipped - no bot token or channel ID provided');

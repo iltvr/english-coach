@@ -276,13 +276,15 @@
     "ru": "Русский"
   },
   "seo": {
-    "title": "EnglishCoach - Personalized English Learning",
-    "description": "Achieve your language goals with customized one-to-one English lessons tailored to your specific needs. Expert coaching for business, academic, and personal growth.",
-    "keywords": "English lessons, language learning, personalized coaching, business English, academic English",
-    "ogTitle": "EnglishCoach - Master English with Expert Guidance",
-    "ogDescription": "Transform your English skills with personalized, one-on-one coaching. Perfect for business, academics, and personal growth.",
-    "twitterTitle": "EnglishCoach - Your Path to English Fluency",
-    "twitterDescription": "Unlock your potential with tailored English lessons. Expert coaching for all levels and goals."
+    "title": "English with Olga Dubinina — 1-on-1 Coaching for Adults",
+    "description": "Learn English with Olga Dubinina — 20+ years of teaching experience, 50+ students from 10+ countries. Personalized 1-on-1 lessons for career growth, relocation, and academic success. Apply for a free intro session.",
+    "keywords": "1-on-1 English lessons, English tutor for adults, business English coaching, personalized English lessons online, English teacher for professionals, Olga Dubinina",
+    "ogTitle": "English with Olga Dubinina — Personalized 1-on-1 Coaching",
+    "ogDescription": "20+ years of experience, 50+ students worldwide. Tailored English lessons for career advancement, relocation, and academic goals. Book a free intro session.",
+    "twitterTitle": "English with Olga Dubinina — 1-on-1 Online Lessons",
+    "twitterDescription": "Personalized English coaching for adults. Career growth, relocation, academic goals. 20+ years of experience. Apply today.",
+    "privacyDescription": "Read the Privacy Policy for EnglishCoach by Olga Dubinina. Learn how your personal data is collected, used, and protected.",
+    "termsDescription": "Terms of Use for EnglishCoach by Olga Dubinina. Understand the rules governing your use of our English tutoring services."
   },
   "components": {
     "loadingButton": {

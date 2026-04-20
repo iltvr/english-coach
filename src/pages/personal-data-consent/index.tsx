@@ -22,6 +22,7 @@ const PersonalDataConsentPage: React.FC = () => {
       <Head>
         <title>{t('personalDataConsent.title')} — EnglishCoach</title>
         <link rel="canonical" href="https://english-coach.online/personal-data-consent" />
+        <meta name="robots" content="noindex, follow" />
       </Head>
       <NavbarComponent isScrolled={true} />
       <main className="flex-grow">

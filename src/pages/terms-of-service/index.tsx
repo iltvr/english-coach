@@ -21,6 +21,8 @@ const TermsOfServicePage: React.FC = () => {
     <div className="min-h-screen flex flex-col">
       <Head>
         <title>{t('termsOfService.title')} — EnglishCoach</title>
+        <meta name="description" content={t('seo.termsDescription')} />
+        <meta name="robots" content="noindex, follow" />
         <link rel="canonical" href="https://english-coach.online/terms-of-service" />
       </Head>
       <NavbarComponent isScrolled={true} />

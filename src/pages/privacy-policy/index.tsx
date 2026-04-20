@@ -21,6 +21,8 @@ const PrivacyPolicyPage: React.FC = () => {
     <div className="min-h-screen flex flex-col">
       <Head>
         <title>{t('privacyPolicy.title')} — EnglishCoach</title>
+        <meta name="description" content={t('seo.privacyDescription')} />
+        <meta name="robots" content="noindex, follow" />
         <link rel="canonical" href="https://english-coach.online/privacy-policy" />
       </Head>
       <NavbarComponent isScrolled={true} />

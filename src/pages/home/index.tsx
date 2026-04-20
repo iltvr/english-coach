@@ -9,10 +9,12 @@ import { ApplicationForm } from '../../components/application-form';
 import { Footer } from '../../components/footer';
 import { useLocation } from 'react-router-dom';
 import { Head } from 'vite-react-ssg';
+import { useTranslation } from 'react-i18next';
 
 const HomePage: React.FC = () => {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const location = useLocation();
+  const { t } = useTranslation();
 
   React.useEffect(() => {
     // Throttle scroll event to prevent excessive function calls
@@ -48,21 +50,38 @@ const HomePage: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Head>
-        <title>EnglishCoach — Английский с Ольгой Дубининой</title>
-        <meta
-          name="description"
-          content="Индивидуальные уроки английского с Ольгой Дубининой. Обучение для бизнеса, учёбы и личностного роста. Запишитесь на первый урок."
-        />
+        <title>{t('seo.title')}</title>
+        <meta name="description" content={t('seo.description')} />
+        <meta name="keywords" content={t('seo.keywords')} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://english-coach.online/" />
+        <meta property="og:title" content={t('seo.ogTitle')} />
+        <meta property="og:description" content={t('seo.ogDescription')} />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={t('seo.twitterTitle')} />
+        <meta name="twitter:description" content={t('seo.twitterDescription')} />
         <link rel="canonical" href="https://english-coach.online/" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "EducationalOrganization",
           "name": "English Coach — Ольга Дубинина",
           "url": "https://english-coach.online",
-          "description": "Индивидуальные уроки английского для бизнеса, учёбы и личностного роста",
+          "description": "Индивидуальные уроки английского для взрослых. Персональная программа для карьеры, переезда и учёбы.",
           "founder": {
             "@type": "Person",
-            "name": "Ольга Дубинина"
+            "name": "Ольга Дубинина",
+            "jobTitle": "Преподаватель английского языка",
+            "description": "Репетитор английского с 20+ летним опытом и 50+ студентами"
+          },
+          "offers": {
+            "@type": "Offer",
+            "description": "Индивидуальные уроки английского языка 1 на 1",
+            "url": "https://english-coach.online/#apply"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@english-coach.online",
+            "contactType": "customer service"
           }
         })}</script>
       </Head>

@@ -22,7 +22,7 @@ i18n
       escapeValue: false
     },
     detection: {
-      order: ['navigator', 'querystring', 'localStorage', 'htmlTag'],
+      order: ['localStorage', 'querystring', 'navigator', 'htmlTag'],
       lookupQuerystring: 'lang',
       caches: ['localStorage']
     }

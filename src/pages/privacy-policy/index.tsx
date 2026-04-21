@@ -10,7 +10,7 @@ interface PolicySection {
 }
 
 const PrivacyPolicyPage: React.FC = () => {
-  const { t } = useTranslation();
+const { t } = useTranslation();
   const sections = t('privacyPolicy.sections', { returnObjects: true }) as PolicySection[];
 
   useEffect(() => {

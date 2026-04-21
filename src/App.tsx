@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import { HeroUIProvider, ToastProvider } from '@heroui/react'
 import { useTranslation } from 'react-i18next'
 import { CookieBanner } from './components/cookie-banner'
+import { ErrorBoundary } from './components/error-boundary'
 
 const App: React.FC = () => {
   const { i18n } = useTranslation()
@@ -23,7 +24,9 @@ const App: React.FC = () => {
     <HeroUIProvider>
       <ToastProvider />
       <React.Fragment key={renderKey}>
-        <Outlet />
+        <ErrorBoundary>
+          <Outlet />
+        </ErrorBoundary>
         <CookieBanner />
       </React.Fragment>
     </HeroUIProvider>

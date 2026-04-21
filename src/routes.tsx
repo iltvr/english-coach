@@ -1,7 +1,7 @@
 import React from 'react'
 import type { RouteObject } from 'react-router-dom'
 import App from './App'
-import ErrorBoundary from './components/ErrorBoundary'
+import { RouteErrorPage } from './components/error-boundary'
 
 const HomePage = React.lazy(() => import('./pages/home'))
 const PrivacyPolicyPage = React.lazy(() => import('./pages/privacy-policy'))
@@ -11,7 +11,7 @@ const PersonalDataConsentPage = React.lazy(() => import('./pages/personal-data-c
 export const routes: RouteObject[] = [
   {
     element: <App />,
-    errorElement: <ErrorBoundary />,
+    errorElement: <RouteErrorPage />,
     children: [
       { path: '/', element: <HomePage /> },
       { path: '/privacy-policy', element: <PrivacyPolicyPage /> },

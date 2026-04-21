@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from '@heroui/react';
+import { useRouteError, isRouteErrorResponse } from 'react-router-dom';
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;
@@ -8,6 +9,63 @@ interface ErrorBoundaryProps {
 interface ErrorBoundaryState {
   hasError: boolean;
   error: Error | null;
+}
+
+function ErrorUI({ is404 }: { is404?: boolean }) {
+  return (
+    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-primary-100 to-secondary-100 p-8 text-center">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(14,165,233,0.15),transparent_60%)]" />
+      <div className="relative z-10 flex flex-col items-center gap-6">
+        <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary-100">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-10 w-10 text-primary"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={1.5}
+          >
+            {is404 ? (
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+            )}
+          </svg>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <h1 className="font-serif text-4xl font-bold text-default-900 md:text-5xl">
+            {is404 ? 'Page not found' : 'Something went wrong'}
+          </h1>
+          <p className="max-w-md text-default-600">
+            {is404
+              ? 'The page you are looking for does not exist.'
+              : 'We\'re sorry, but there was an error loading this page.'}
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Button
+            as="a"
+            href="/"
+            color="primary"
+            size="lg"
+            className="font-medium"
+          >
+            Go home
+          </Button>
+          <Button
+            size="lg"
+            variant="light"
+            className="font-medium"
+            onPress={() => window.history.back()}
+          >
+            Go back
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
@@ -21,35 +79,19 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
-    console.error("Application error:", error, errorInfo);
+    console.error('Application error:', error, errorInfo);
   }
 
   render() {
     if (this.state.hasError) {
-      return (
-        <div className="min-h-screen flex items-center justify-center p-4">
-          <div className="max-w-md w-full text-center">
-            <h1 className="text-2xl font-bold mb-4">Something went wrong</h1>
-            <p className="mb-6 text-default-600">
-              We're sorry, but there was an error loading this page.
-            </p>
-            <div className="mb-4 p-4 bg-danger-50 text-danger rounded-md text-left overflow-auto max-h-32">
-              <pre className="text-sm">{this.state.error?.toString()}</pre>
-            </div>
-            <Button 
-              color="primary"
-              onPress={() => {
-                this.setState({ hasError: false, error: null });
-                window.location.href = '/';
-              }}
-            >
-              Reload Application
-            </Button>
-          </div>
-        </div>
-      );
+      return <ErrorUI />;
     }
-
     return this.props.children;
   }
+}
+
+export function RouteErrorPage() {
+  const error = useRouteError();
+  const is404 = isRouteErrorResponse(error) && error.status === 404;
+  return <ErrorUI is404={is404} />;
 }

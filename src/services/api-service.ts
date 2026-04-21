@@ -1,4 +1,3 @@
-import { sendTelegramNotification } from './telegram-service';
 import { sendApplication } from './email-service';
 
 interface ApplicationData {
@@ -17,7 +16,7 @@ interface ApplicationData {
 }
 
 // Simplified API service to prevent build issues
-export const submitApplication = async (data: ApplicationData, turnstileToken: string): Promise<void> => {
+export const submitApplication = async (data: ApplicationData, _turnstileToken: string): Promise<void> => {
   // const turnstileResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
   //   method: 'POST',
   //   headers: {

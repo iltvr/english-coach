@@ -7,8 +7,6 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { submitApplication } from '../services/api-service';
 import { isValidEmail, isValidPhone } from '../utils/form-validators';
-import Turnstile from 'react-turnstile';
-
 interface FormData {
   name: string;
   email: string;
@@ -24,7 +22,7 @@ interface FormData {
 export const ApplicationForm: React.FC = () => {
   const { t } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [turnstileToken, setTurnstileToken] = useState('');
+  const [turnstileToken] = useState('');
   const [ipAddress, setIpAddress] = useState('');
   const [browserInfo, setBrowserInfo] = useState('');
   const [timeZone, setTimeZone] = useState('');
@@ -66,7 +64,7 @@ export const ApplicationForm: React.FC = () => {
     { key: "6-8", label: t('application.form.weeklyTimeOptions.option3') },
   ];
 
-  const { control, handleSubmit, reset, watch, formState: { errors, isValid, isDirty } } = useForm<FormData>({
+  const { control, handleSubmit, reset, watch, formState: { errors } } = useForm<FormData>({
     defaultValues: {
       name: '',
       email: '',
@@ -81,7 +79,7 @@ export const ApplicationForm: React.FC = () => {
     mode: "onTouched"
   });
 
-  // Fix: Properly watch all required fields
+  // eslint-disable-next-line react-hooks/incompatible-library
   const name = watch("name");
   const email = watch("email");
   const contact = watch("contact");

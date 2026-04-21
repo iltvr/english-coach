@@ -18,6 +18,7 @@ export function useCookieConsent() {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setConsent(JSON.parse(stored));
       } else {
         setShown(true);

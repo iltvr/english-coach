@@ -6,7 +6,7 @@ import { I18nextProvider } from 'react-i18next';
 import i18n from '../i18n';
 
 jest.mock('@heroui/react', () => ({
-  Button: ({ children, onPress, startContent, endContent, ...props }: any) => (
+  Button: ({ children, onPress, startContent, endContent, ...props }: React.ComponentProps<'button'> & { onPress?: () => void; startContent?: React.ReactNode; endContent?: React.ReactNode }) => (
     <button onClick={onPress} {...props}>
       {startContent}{children}{endContent}
     </button>

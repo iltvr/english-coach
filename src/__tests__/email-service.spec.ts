@@ -12,7 +12,7 @@ describe("Email Service (using fetch)", () => {
     termsAgreed: true,
   };
 
-  const globalAny: any = global;
+  const globalAny = globalThis as typeof globalThis & { fetch: jest.Mock };
 
   beforeEach(() => {
     jest.clearAllMocks();
